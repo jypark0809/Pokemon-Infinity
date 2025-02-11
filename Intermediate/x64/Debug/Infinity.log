@@ -1,2 +1,193 @@
-﻿  LevelManager.cpp
-  Infinity.vcxproj -> C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Binaries\Infinity_Debug.exe
+﻿  pch.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\Structs.h(11,30): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'pch.cpp'을(를) 컴파일하는 중)
+  
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  AssetManager.cpp
+  CAsset.cpp
+  CBase.cpp
+  CCamera.cpp
+  CComponent.cpp
+  CDebugRender.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(58,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(57,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(56,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(55,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(68,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(67,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(66,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(65,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(72,39): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(72,26): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(73,41): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CDebugRender.cpp(73,26): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CDebugRender.cpp'을(를) 컴파일하는 중)
+  
+  CEngine.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CEngine.cpp(83,79): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CEngine.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CEngine.cpp(83,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CEngine.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CEngine.cpp(96,50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CEngine.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CEngine.cpp(96,34): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CEngine.cpp'을(를) 컴파일하는 중)
+  
+  CFlipbook.cpp
+  CFlipbookEditorLevel.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(81,25): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(81,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(80,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(80,19): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(78,25): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(78,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(77,50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(76,50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookEditorLevel.cpp(158,36): warning C4267: '=': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+  CFlipbookPlayer.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookPlayer.cpp(59,19): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookPlayer.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookPlayer.cpp(59,10): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookPlayer.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookPlayer.cpp(58,25): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookPlayer.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookPlayer.cpp(58,13): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookPlayer.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookPlayer.cpp(56,19): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookPlayer.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookPlayer.cpp(56,10): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookPlayer.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookPlayer.cpp(55,28): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookPlayer.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CFlipbookPlayer.cpp(54,28): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CFlipbookPlayer.cpp'을(를) 컴파일하는 중)
+  
+  CGameLevel.cpp
+  CLevel.cpp
+  CObject.cpp
+  CPlayer.cpp
+  CPokemon.cpp
+  CSelectGDI.cpp
+  CSprite.cpp
+  CSpriteEditorLevel.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(55,41): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(93,52): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(92,51): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(151,17): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(152,17): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(252,22): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(260,22): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(268,19): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp(276,20): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/CSpriteEditorLevel.cpp'을(를) 컴파일하는 중)
+  
+  CTexture.cpp
+  CTile.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  CTileMapEditorLevel.cpp
+  CTilemapRenderer.cpp
+  CTitleLevel.cpp
+  FlipbookEditorProc.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\FlipbookEditorProc.cpp(73,32): warning C4244: '=': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/FlipbookEditorProc.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\FlipbookEditorProc.cpp(86,32): warning C4244: '=': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/FlipbookEditorProc.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\FlipbookEditorProc.cpp(102,23): warning C4244: '초기화 중': 'LRESULT'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/FlipbookEditorProc.cpp'을(를) 컴파일하는 중)
+  
+  Infinity.cpp
+  KeyManager.cpp
+  LevelManager.cpp
+  SpriteEditorProc.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\SpriteEditorProc.cpp(24,53): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/SpriteEditorProc.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\SpriteEditorProc.cpp(24,41): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/SpriteEditorProc.cpp'을(를) 컴파일하는 중)
+  
+  TaskManager.cpp
+  TimeManager.cpp
+  Utils.cpp
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\Utils.cpp(91,11): warning C4267: '초기화 중': 'size_t'에서 'BYTE'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/Utils.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\Utils.cpp(195,13): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/Utils.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Infinity\Utils.cpp(196,13): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/Utils.cpp'을(를) 컴파일하는 중)
+  
+  코드를 생성하고 있습니다...
+CCamera.obj : error LNK2001: 확인할 수 없는 외부 기호 "public: virtual void __cdecl CComponent::Tick(void)" (?Tick@CComponent@@UEAAXXZ)
+CComponent.obj : error LNK2001: 확인할 수 없는 외부 기호 "public: virtual void __cdecl CComponent::Tick(void)" (?Tick@CComponent@@UEAAXXZ)
+CFlipbookPlayer.obj : error LNK2001: 확인할 수 없는 외부 기호 "public: virtual void __cdecl CComponent::Tick(void)" (?Tick@CComponent@@UEAAXXZ)
+C:\Users\jypar\Documents\GitHub\Pokemon-Infinity\Binaries\Infinity_Debug.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.

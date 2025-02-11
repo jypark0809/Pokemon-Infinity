@@ -16,6 +16,7 @@ public:
     ComponentType GetType() { return m_Type; }
 
     virtual void BeginPlay();
+    virtual void Tick();
     virtual void FinalTick() = 0;
     virtual void Render(HDC _hdc);
 

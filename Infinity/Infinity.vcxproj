@@ -161,7 +161,9 @@
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpriteEditorLevel.h" />
     <ClInclude Include="CTexture.h" />
+    <ClInclude Include="CTile.h" />
     <ClInclude Include="CTileMapEditorLevel.h" />
+    <ClInclude Include="CTilemapRenderer.h" />
     <ClInclude Include="CTitleLevel.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="Enums.h" />
@@ -197,7 +199,9 @@
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpriteEditorLevel.cpp" />
     <ClCompile Include="CTexture.cpp" />
+    <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTileMapEditorLevel.cpp" />
+    <ClCompile Include="CTilemapRenderer.cpp" />
     <ClCompile Include="CTitleLevel.cpp" />
     <ClCompile Include="FlipbookEditorProc.cpp" />
     <ClCompile Include="Infinity.cpp" />

@@ -29,9 +29,9 @@ enum class BRUSH_TYPE
 enum class LayerType
 {
 	DEFAULT,
+	TILE,
 	PLAYER,
 	MONSTER,
-	TILE,
 
 	UI = 31,
 	COUNT = 32
@@ -46,6 +46,7 @@ enum class ComponentType
 	RIGIDBODY,
 	STATE_MACHINE,
 	TILEMAP,
+	TILEMAPRENDERER
 };
 
 enum class AssetType
