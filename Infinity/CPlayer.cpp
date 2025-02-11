@@ -22,7 +22,7 @@ CPlayer::CPlayer()
 	m_fbPlayer = AddComponent<CFlipbookPlayer>();
 	CTexture* pAtlasTex = AssetManager::GetInstance()->LoadTexture(L"NPC_Red", L"Texture\\Characters\\NPC_Red.png");
 
-	m_fbPlayer->AddFlipbook(0, AssetManager::GetInstance()->LoadFlipbook(L"Red_Move_Down", L"Flipbook\\Red_Move_Down.flip"));
+	//m_fbPlayer->AddFlipbook(0, AssetManager::GetInstance()->LoadFlipbook(L"Red_Move_Down", L"Flipbook\\Red_Move_Down.flip"));
 	//m_fbPlayer->AddFlipbook(1, AssetManager::GetInstance()->LoadFlipbook(L"IDLE_LEFT", L"Flipbook\\IDLE_LEFT.flip"));
 	//m_fbPlayer->AddFlipbook(2, AssetManager::GetInstance()->LoadFlipbook(L"IDLE_RIGHT", L"Flipbook\\IDLE_RIGHT.flip"));
 	//m_fbPlayer->AddFlipbook(3, AssetManager::GetInstance()->LoadFlipbook(L"IDLE_UP", L"Flipbook\\IDLE_UP.flip"));
@@ -31,7 +31,7 @@ CPlayer::CPlayer()
 	//m_fbPlayer->AddFlipbook(6, AssetManager::GetInstance()->LoadFlipbook(L"MOVE_RIGHT", L"Flipbook\\MOVE_RIGHT.flip"));
 	//m_fbPlayer->AddFlipbook(7, AssetManager::GetInstance()->LoadFlipbook(L"MOVE_UP", L"Flipbook\\MOVE_UP.flip"));
 
-	m_fbPlayer->Play(0, true);
+	// m_fbPlayer->Play(0, true);
 }
 
 CPlayer::~CPlayer()

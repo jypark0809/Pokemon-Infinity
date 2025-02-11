@@ -18,6 +18,10 @@ void CCamera::BeginPlay()
 	m_LookAt = (vResolution / 2.f);
 }
 
+void CCamera::Tick()
+{
+}
+
 void CCamera::FinalTick()
 {
 	FollowTarget();

@@ -15,6 +15,10 @@ void CComponent::BeginPlay()
 {
 }
 
+void CComponent::Tick()
+{
+}
+
 void CComponent::Render(HDC _hdc)
 {
 }

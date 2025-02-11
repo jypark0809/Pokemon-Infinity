@@ -28,7 +28,7 @@ void LevelManager::Init()
 	
 
 	// StartLevel 을 현재 레벨로 지정
-	LoadLevel(LevelType::SPRITE_EDITOR);
+	LoadLevel(LevelType::FLIPBOOK_EDITOR);
 }
 
 void LevelManager::Tick()

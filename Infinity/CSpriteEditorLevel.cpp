@@ -116,10 +116,10 @@ void CSpriteEditorLevel::OnExit()
 void CSpriteEditorLevel::LoadFile()
 {
     Revert();
+    wstring InitialDir = CONTENT_PATH.wstring() + L"\\Texture\\Characters";
 
     // 파일 경로 문자열
     wchar_t szFilePath[255] = {};
-
     OPENFILENAME Desc = {};
     Desc.lStructSize = sizeof(OPENFILENAME);
     Desc.hwndOwner = nullptr;
@@ -127,7 +127,7 @@ void CSpriteEditorLevel::LoadFile()
     Desc.nMaxFile = 255;
     Desc.lpstrFilter = L"그림 파일\0*.png;*.bmp\0모든 파일(*.*)\0*.*";
     Desc.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-    Desc.lpstrInitialDir = CONTENT_PATH.c_str();
+    Desc.lpstrInitialDir = InitialDir.c_str();
 
     if (GetOpenFileName(&Desc))
     {

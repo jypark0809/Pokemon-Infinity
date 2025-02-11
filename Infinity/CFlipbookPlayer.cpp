@@ -19,6 +19,10 @@ CFlipbookPlayer::~CFlipbookPlayer()
 }
 
 
+void CFlipbookPlayer::Tick()
+{
+}
+
 void CFlipbookPlayer::FinalTick()
 {
 	if (!m_CurFlip)

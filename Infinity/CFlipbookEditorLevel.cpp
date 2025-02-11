@@ -98,6 +98,7 @@ void CFlipbookEditorLevel::AddSprite()
 {
     // 파일 경로 문자열
     wchar_t szFilePath[255] = {};
+    wstring InitialDir = CONTENT_PATH.wstring() + L"\\Sprite";
 
     OPENFILENAME Desc = {};
     Desc.lStructSize = sizeof(OPENFILENAME);
@@ -106,7 +107,7 @@ void CFlipbookEditorLevel::AddSprite()
     Desc.nMaxFile = 255;
     Desc.lpstrFilter = L"Sprite Files\0*.sprite\0All Files (*.*)\0*.*";
     Desc.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-    Desc.lpstrInitialDir = CONTENT_PATH.c_str();
+    Desc.lpstrInitialDir = InitialDir.c_str();
 
     if (GetOpenFileName(&Desc))
     {
