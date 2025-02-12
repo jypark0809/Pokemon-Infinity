@@ -4,7 +4,8 @@
 #include "CTexture.h"
 #include "CSprite.h"
 #include "CFlipbook.h"
-#include "CObject.h"
+#include "CGameObject.h"
+#include "CTransform.h"
 
 CFlipbookPlayer::CFlipbookPlayer()
 	: CComponent(ComponentType::FLIPBOOK_PLAYER)
@@ -49,7 +50,7 @@ void CFlipbookPlayer::Render(HDC _dc)
 	Vec2 vSize			= pSprite->GetSize();
 	Vec2 vOffset		= pSprite->GetOffset();
 
-	Vec2 vPos = GetOwner()->GetViewPos();
+	Vec2 vPos = GetOwner()->GetComponent<CTransform>()->GetViewPos();
 
 	BLENDFUNCTION blend = {};
 	blend.BlendOp = AC_SRC_OVER;

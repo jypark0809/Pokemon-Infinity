@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CTilemapEditorLevel.h"
-#include "CObject.h"
+#include "CGameObject.h"
 #include "CMap.h"
 #include "CGrid.h"
 

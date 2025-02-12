@@ -21,7 +21,7 @@ class CAsset* LoadAssetInfo(FILE* _File, AssetType _type);
 void CreateTileSprite(const wstring _SpriteName, class CTexture* _AltasTex, int _Row, int _Col, Vec2 _TileSize, vector<class CSprite*>& _vecSprite);
 
 // Object 유효성 체크
-bool IsValid(class CObject*& _Object);
+bool IsValid(class CGameObject*& _Object);
 
 // 체크 패턴
 void DrawCheckeredPattern(HDC _Hdc, int _Width, int _Height, int _SquareSize = 20);

@@ -39,11 +39,12 @@ public:
 	T* AddComponent()
 	{
 		T* pComponent = new T;
-		pComponent->BeginPlay();
-		pComponent->SetOwner(this);
 
 		if (pComponent == nullptr)
 			throw std::runtime_error("Failed to create component");
+
+		// pComponent->BeginPlay();
+		pComponent->SetOwner(this);
 
 		m_vecComponent.push_back(pComponent);
 
@@ -53,7 +54,7 @@ public:
 	virtual void BeginPlay();
 	virtual void Tick();
 	virtual void FinalTick();
-	virtual void Render(HDC hdc);
+	virtual void Render(HDC _hdc);
 
 public:
 	CGameObject();

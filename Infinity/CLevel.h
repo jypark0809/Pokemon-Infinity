@@ -2,13 +2,13 @@
 
 #include "CBase.h"
 
-class CObject;
+class CGameObject;
 
 class CLevel
 	: public CBase
 {
 private:
-	vector<CObject*>	m_Objects[(UINT)LayerType::COUNT];
+	vector<CGameObject*>	m_Objects[(UINT)LayerType::COUNT];
 
 public:
 	virtual void BeginPlay();			// 레벨이 시작, 레벨이 소유하고 있던 오브젝트들이 초기화작업을 수행하는 단계
@@ -19,9 +19,9 @@ public:
 	virtual void OnEnter();			// 레벨이 전환되면서, 해당 레벨로 진입할 때 호출 됨
 	virtual void OnExit();			// 레벨이 전환되면서, 해당 레벨을 빠져 나갈때 호출 됨
 
-	const vector<CObject*>& GetObjects(LayerType _Layer) { return m_Objects[(UINT)_Layer]; }
-	void AddObject(CObject* _Object, LayerType _LayerType);
-	void DeleteObject(CObject* _Object);
+	const vector<CGameObject*>& GetObjects(LayerType _Layer) { return m_Objects[(UINT)_Layer]; }
+	void AddObject(CGameObject* _Object, LayerType _LayerType);
+	void DeleteObject(CGameObject* _Object);
 	void RemoveObjects(int _LayerIdx);
 	virtual void Destroy();
 

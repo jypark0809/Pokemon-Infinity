@@ -173,9 +173,6 @@
     <ClInclude Include="CSelectGDI.h">
       <Filter>소스 파일\Module</Filter>
     </ClInclude>
-    <ClInclude Include="CObject.h">
-      <Filter>소스 파일\03. Object</Filter>
-    </ClInclude>
     <ClInclude Include="CTexture.h">
       <Filter>소스 파일\05. Asset\1. Texture</Filter>
     </ClInclude>
@@ -191,7 +188,7 @@
     <ClInclude Include="CGameLevel.h">
       <Filter>소스 파일\02. Level\2. Game</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayer.h">
+    <ClInclude Include="CPlayerController.h">
       <Filter>소스 파일\03. Object\1. Player</Filter>
     </ClInclude>
     <ClInclude Include="CFlipbookPlayer.h">
@@ -293,9 +290,6 @@
     <ClCompile Include="CSelectGDI.cpp">
       <Filter>소스 파일\Module</Filter>
     </ClCompile>
-    <ClCompile Include="CObject.cpp">
-      <Filter>소스 파일\03. Object</Filter>
-    </ClCompile>
     <ClCompile Include="CTexture.cpp">
       <Filter>소스 파일\05. Asset\1. Texture</Filter>
     </ClCompile>
@@ -311,7 +305,7 @@
     <ClCompile Include="CGameLevel.cpp">
       <Filter>소스 파일\02. Level\2. Game</Filter>
     </ClCompile>
-    <ClCompile Include="CPlayer.cpp">
+    <ClCompile Include="CPlayerController.cpp">
       <Filter>소스 파일\03. Object\1. Player</Filter>
     </ClCompile>
     <ClCompile Include="CFlipbookPlayer.cpp">

@@ -4,7 +4,7 @@
 #include "CDebugRender.h"
 #include "AssetManager.h"
 #include "TaskManager.h"
-#include "CObject.h"
+#include "CGameObject.h"
 #include "CTexture.h"
 #include "CSprite.h"
 #include "CFlipbook.h"
@@ -173,7 +173,7 @@ void CreateTileSprite(const wstring _SpriteName, class CTexture* _AltasTex, int 
 	}
 }
 
-bool IsValid(CObject*& _Object)
+bool IsValid(CGameObject*& _Object)
 {
 	if (nullptr == _Object)
 		return false;

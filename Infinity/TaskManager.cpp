@@ -2,7 +2,7 @@
 #include "TaskManager.h"
 #include "LevelManager.h"
 #include "CLevel.h"
-#include "CObject.h"
+#include "CGameObject.h"
 
 TaskManager::TaskManager()
 
@@ -35,7 +35,7 @@ void TaskManager::Tick()
 		{
 			CLevel* pCurLevel = LevelManager::GetInstance()->GetCurrentLevel();
 
-			CObject* pNewObj = (CObject*)task.Param0;
+			CGameObject* pNewObj = (CGameObject*)task.Param0;
 			LayerType Layer = (LayerType)task.Param1;
 
 			pCurLevel->AddObject(pNewObj, Layer);
@@ -44,7 +44,7 @@ void TaskManager::Tick()
 		break;
 		case TASK_TYPE::DELETE_OBJECT:
 		{
-			CObject* pObject = (CObject*)task.Param0;
+			CGameObject* pObject = (CGameObject*)task.Param0;
 
 			// 같은 오브젝트에 대해서 동시에 여러번 삭제 요청이 들어온 경우 예외처리
 			if (!pObject->m_Dead)

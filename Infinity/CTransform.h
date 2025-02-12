@@ -11,7 +11,7 @@ private:
     Vec2                    m_Scale;
 
 public:
-    Vec2 GetViewPos() {}
+    Vec2 GetViewPos() { return m_Position; }
     Vec2 GetPosition() { return m_Position; }
     void SetPosition(Vec2 _position) { m_Position = _position; }
 

@@ -2,30 +2,45 @@
 #include "CGameObject.h"
 #include "TaskManager.h"
 #include "CComponent.h"
+#include "CTransform.h"
 
 CGameObject::CGameObject()
 {
-
+	AddComponent<CTransform>();
 }
 
 CGameObject::~CGameObject()
 {
+	Delete_Vec(m_vecComponent);
 }
 
 void CGameObject::BeginPlay()
 {
+	for (size_t i = 0; i < m_vecComponent.size(); ++i)
+	{
+		m_vecComponent[i]->BeginPlay();
+	}
 }
 
 void CGameObject::Tick()
 {
+	
 }
 
 void CGameObject::FinalTick()
 {
+	for (size_t i = 0; i < m_vecComponent.size(); ++i)
+	{
+		m_vecComponent[i]->FinalTick();
+	}
 }
 
-void CGameObject::Render(HDC hdc)
+void CGameObject::Render(HDC _hdc)
 {
+	for (size_t i = 0; i < m_vecComponent.size(); ++i)
+	{
+		m_vecComponent[i]->Render(_hdc);
+	}
 }
 
 CComponent* CGameObject::AddComponent(CComponent* _Component)

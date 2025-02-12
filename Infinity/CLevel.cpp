@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CLevel.h"
-#include "CObject.h"
+#include "CGameObject.h"
 
 CLevel::CLevel()
 {
@@ -53,14 +53,14 @@ void CLevel::Render(HDC _dc)
 
 	for (UINT i = 0; i < (UINT)LayerType::COUNT; ++i)
 	{
-		vector<CObject*>& veCObject = m_Objects[i];
-		vector<CObject*>::iterator iter = veCObject.begin();
+		vector<CGameObject*>& veCGameObject = m_Objects[i];
+		vector<CGameObject*>::iterator iter = veCGameObject.begin();
 
-		for (; iter != veCObject.end(); )
+		for (; iter != veCGameObject.end(); )
 		{
 			if ((*iter)->IsDead())
 			{
-				iter = veCObject.erase(iter);
+				iter = veCGameObject.erase(iter);
 			}
 			else
 			{
@@ -71,16 +71,16 @@ void CLevel::Render(HDC _dc)
 	}
 }
 
-void CLevel::AddObject(CObject* _Object, LayerType _LayerType)
+void CLevel::AddObject(CGameObject* _Object, LayerType _LayerType)
 {
 	m_Objects[(UINT)_LayerType].push_back(_Object);
 	_Object->m_Layer = _LayerType;
 }
 
-void CLevel::DeleteObject(CObject* _Object)
+void CLevel::DeleteObject(CGameObject* _Object)
 {
 	LayerType layerType = _Object->GetLayerType();
-	vector<CObject*>& vecObj = m_Objects[static_cast<UINT>(layerType)];
+	vector<CGameObject*>& vecObj = m_Objects[static_cast<UINT>(layerType)];
 	for (size_t i = 0; i < vecObj.size(); ++i)
 	{
 		if (vecObj[i] == _Object)
@@ -104,6 +104,7 @@ void CLevel::Destroy()
 
 void CLevel::OnEnter()
 {
+	BeginPlay();
 }
 
 void CLevel::OnExit()

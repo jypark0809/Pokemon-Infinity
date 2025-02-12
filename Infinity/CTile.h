@@ -1,7 +1,7 @@
 #pragma once
-#include "CObject.h"
+#include "CGameObject.h"
 class CTile :
-    public CObject
+    public CGameObject
 {
 	virtual void BeginPlay() override;
 	virtual void Tick() override;

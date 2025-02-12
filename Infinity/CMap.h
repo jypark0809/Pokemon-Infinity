@@ -1,10 +1,10 @@
 #pragma once
-#include "CObject.h"
+#include "CGameObject.h"
 
 class CGrid;
 
 class CMap :
-    public CObject
+    public CGameObject
 {
 private:
     CGrid* m_Grid;

@@ -1,16 +1,15 @@
 #include "pch.h"
 #include "CGameLevel.h"
-#include "CPlayer.h"
-
-Vec2 vResolution = Vec2(512, 384);
+#include "CPlayerController.h"
+#include "CTransform.h"
 
 CGameLevel::CGameLevel()
 {
 	// Player
-	CObject* pNewObj = new CPlayer;
-	pNewObj->SetName(L"Player");
-	pNewObj->SetPos(Vec2(vResolution.x / 2, vResolution.y / 2));
-	AddObject(pNewObj, LayerType::PLAYER);
+	CGameObject* pPlayer = new CGameObject;
+	pPlayer->AddComponent<CPlayerController>();
+	pPlayer->SetName(L"Player");
+	AddObject(pPlayer, LayerType::PLAYER);
 }
 
 CGameLevel::~CGameLevel()

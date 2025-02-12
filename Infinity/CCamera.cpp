@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CCamera.h"
-#include "CObject.h"
+#include "CGameObject.h"
+#include "CTransform.h"
 
 CCamera::CCamera()
 	: CComponent(ComponentType::CAMERA)
@@ -41,5 +42,5 @@ void CCamera::FollowTarget()
 	if (nullptr == m_Target)
 		return;
 
-	m_LookAt = m_Target->GetPos();
+	m_LookAt = m_Target->GetComponent<CTransform>()->GetPosition();
 }
