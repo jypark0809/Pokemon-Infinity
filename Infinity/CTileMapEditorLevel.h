@@ -1,13 +1,16 @@
 #pragma once
 #include "CLevel.h"
 
-class CMap;
+class CGrid;
+class CTilemap;
 
 class CTilemapEditorLevel :
     public CLevel
 {
 private:
-    CMap* m_Map;
+    HWND                m_SubWindow;
+    CGrid*              m_Grid;
+    vector<CTilemap*>   m_vecTilemap;
 
 public:
     virtual void BeginPlay() override;
@@ -17,6 +20,14 @@ public:
 
     virtual void OnEnter() override;
     virtual void OnExit() override;
+
+    bool Cango(Vec2Int _CellPos);
+
+private:
+    void CreateSubWindow();
+    void DestroySubWindow();
+
+
 public:
     CTilemapEditorLevel();
     ~CTilemapEditorLevel();

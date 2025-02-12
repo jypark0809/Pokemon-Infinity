@@ -1,11 +1,22 @@
 #pragma once
-#include "CGameObject.h"
+#include "CAsset.h"
+
+class CSprite;
+
 class CTile :
-    public CGameObject
+    public CAsset
 {
-	virtual void BeginPlay() override;
-	virtual void Tick() override;
-	virtual void FinalTick() override;
-	virtual void Render(HDC hdc) override;
+    CSprite*    m_Sprite;
+    bool        m_Blocked;
+
+public:
+    virtual int Save(const wstring& _RelativePath) override;
+    virtual int Load(const wstring& _RelativePath) override;
+
+    // void AddSprite(CSprite* _Sprite) { m_Sprites.push_back(_Sprite); }
+
+public:
+    CTile();
+    ~CTile();
 };
 

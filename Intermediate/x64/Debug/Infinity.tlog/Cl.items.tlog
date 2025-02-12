@@ -12,7 +12,6 @@ C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CGameLevel.cpp;C:\Use
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CGameObject.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CGameObject.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CGrid.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CGrid.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CLevel.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CLevel.obj
-C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CMap.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CMap.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CPlayerController.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CPlayerController.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CPokemon.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CPokemon.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CScript.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CScript.obj
@@ -21,6 +20,7 @@ C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CSprite.cpp;C:\Users\
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CSpriteEditorLevel.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CSpriteEditorLevel.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CTexture.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CTexture.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CTile.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CTile.obj
+C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CTilemap.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CTilemap.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CTilemapEditorLevel.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CTilemapEditorLevel.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CTilemapRenderer.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CTilemapRenderer.obj
 C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Infinity\CTitleLevel.cpp;C:\Users\jypark\Documents\GitHub\Pokemon-Infinity\Intermediate\x64\Debug\CTitleLevel.obj

@@ -87,7 +87,7 @@ void CFlipbookEditorLevel::OnEnter()
 	Vec2 vResolutionHD = Vec2(1280, 720);
 	CEngine::GetInstance()->ChangeWindowSize(int(vResolutionHD.x), int(vResolutionHD.y));
 
-	BeginPlay();
+    CLevel::OnEnter();
 }
 
 void CFlipbookEditorLevel::OnExit()
@@ -170,6 +170,7 @@ void CFlipbookEditorLevel::SaveFlipbook()
 {
     // 파일 경로 문자열
     wchar_t szFilePath[255] = {};
+    wstring InitialDir = CONTENT_PATH.wstring() + L"\\Flipbook";
 
     OPENFILENAME Desc = {};
     Desc.lStructSize = sizeof(OPENFILENAME);
@@ -178,7 +179,7 @@ void CFlipbookEditorLevel::SaveFlipbook()
     Desc.nMaxFile = 255;
     Desc.lpstrFilter = L"Flipbook Files\0*.flip\0All Files (*.*)\0*.*";
     Desc.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-    Desc.lpstrInitialDir = CONTENT_PATH.c_str();
+    Desc.lpstrInitialDir = InitialDir.c_str();
 
     if (GetSaveFileName(&Desc))
     {

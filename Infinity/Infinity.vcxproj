@@ -156,7 +156,6 @@
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CGrid.h" />
     <ClInclude Include="CLevel.h" />
-    <ClInclude Include="CMap.h" />
     <ClInclude Include="CPlayerController.h" />
     <ClInclude Include="CPokemon.h" />
     <ClInclude Include="CScript.h" />
@@ -165,6 +164,7 @@
     <ClInclude Include="CSpriteEditorLevel.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
+    <ClInclude Include="CTilemap.h" />
     <ClInclude Include="CTilemapEditorLevel.h" />
     <ClInclude Include="CTilemapRenderer.h" />
     <ClInclude Include="CTitleLevel.h" />
@@ -198,7 +198,6 @@
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CGrid.cpp" />
     <ClCompile Include="CLevel.cpp" />
-    <ClCompile Include="CMap.cpp" />
     <ClCompile Include="CPlayerController.cpp" />
     <ClCompile Include="CPokemon.cpp" />
     <ClCompile Include="CScript.cpp" />
@@ -207,6 +206,7 @@
     <ClCompile Include="CSpriteEditorLevel.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />
+    <ClCompile Include="CTilemap.cpp" />
     <ClCompile Include="CTilemapEditorLevel.cpp" />
     <ClCompile Include="CTilemapRenderer.cpp" />
     <ClCompile Include="CTitleLevel.cpp" />

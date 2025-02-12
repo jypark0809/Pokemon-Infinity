@@ -84,29 +84,29 @@
     <Filter Include="소스 파일\02. Level\4. Flipbook Editor">
       <UniqueIdentifier>{1f3644ea-6fa7-4184-84de-ba60a2ba086a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\03. Object\3. Pokemon">
-      <UniqueIdentifier>{ae5954a7-f12c-4142-8810-36c87df6ea2d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\03. Object\2. Tile">
-      <UniqueIdentifier>{baf12890-6f2d-4b5c-87b7-79e18c08475e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\04. Component\Tilemap Renderer">
-      <UniqueIdentifier>{d567d309-b85a-4cbf-9751-75f35774ce7b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\02. Level\5. Tilemap Editor">
       <UniqueIdentifier>{69e381ae-6b2b-483b-b795-dd22871b7b34}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\03. Object\4. Map">
-      <UniqueIdentifier>{e19ee83d-b439-4ff0-bb90-8a508b75c979}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\04. Component\Grid">
       <UniqueIdentifier>{753af95f-8a60-45c6-a214-29ccef1c219e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\04. Component\Transform">
+      <UniqueIdentifier>{a223ad91-73fe-4f30-9efd-0b189b8a13c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Component\TilemapRenderer">
+      <UniqueIdentifier>{d567d309-b85a-4cbf-9751-75f35774ce7b}</UniqueIdentifier>
+    </Filter>
     <Filter Include="소스 파일\04. Component\Script">
       <UniqueIdentifier>{1c036dc6-4ddb-4a12-8c8f-5c359872d9dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\04. Component\Transform">
-      <UniqueIdentifier>{a223ad91-73fe-4f30-9efd-0b189b8a13c6}</UniqueIdentifier>
+    <Filter Include="소스 파일\04. Component\Tilemap">
+      <UniqueIdentifier>{014965a4-fccf-404d-a9c6-06c345339bbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05. Asset\4. Tile">
+      <UniqueIdentifier>{f66e1adf-6e11-4f4f-acd1-e3967ccba1d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\2. Pokemon">
+      <UniqueIdentifier>{ae5954a7-f12c-4142-8810-36c87df6ea2d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -201,7 +201,7 @@
       <Filter>소스 파일\02. Level\5. Tilemap Editor</Filter>
     </ClInclude>
     <ClInclude Include="CPokemon.h">
-      <Filter>소스 파일\03. Object\3. Pokemon</Filter>
+      <Filter>소스 파일\03. Object\2. Pokemon</Filter>
     </ClInclude>
     <ClInclude Include="CSpriteEditorLevel.h">
       <Filter>소스 파일\02. Level\3. Sprite Editor</Filter>
@@ -209,17 +209,11 @@
     <ClInclude Include="CFlipbookEditorLevel.h">
       <Filter>소스 파일\02. Level\4. Flipbook Editor</Filter>
     </ClInclude>
-    <ClInclude Include="CTile.h">
-      <Filter>소스 파일\03. Object\2. Tile</Filter>
-    </ClInclude>
     <ClInclude Include="CTilemapRenderer.h">
-      <Filter>소스 파일\04. Component\Tilemap Renderer</Filter>
+      <Filter>소스 파일\04. Component\TilemapRenderer</Filter>
     </ClInclude>
     <ClInclude Include="CGrid.h">
       <Filter>소스 파일\04. Component\Grid</Filter>
-    </ClInclude>
-    <ClInclude Include="CMap.h">
-      <Filter>소스 파일\03. Object\4. Map</Filter>
     </ClInclude>
     <ClInclude Include="CScript.h">
       <Filter>소스 파일\04. Component\Script</Filter>
@@ -229,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="CTransform.h">
       <Filter>소스 파일\04. Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="CTilemap.h">
+      <Filter>소스 파일\04. Component\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="CTile.h">
+      <Filter>소스 파일\05. Asset\4. Tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -318,7 +318,7 @@
       <Filter>소스 파일\02. Level\5. Tilemap Editor</Filter>
     </ClCompile>
     <ClCompile Include="CPokemon.cpp">
-      <Filter>소스 파일\03. Object\3. Pokemon</Filter>
+      <Filter>소스 파일\03. Object\2. Pokemon</Filter>
     </ClCompile>
     <ClCompile Include="CSpriteEditorLevel.cpp">
       <Filter>소스 파일\02. Level\3. Sprite Editor</Filter>
@@ -332,17 +332,11 @@
     <ClCompile Include="CFlipbookEditorLevel.cpp">
       <Filter>소스 파일\02. Level\4. Flipbook Editor</Filter>
     </ClCompile>
-    <ClCompile Include="CTile.cpp">
-      <Filter>소스 파일\03. Object\2. Tile</Filter>
-    </ClCompile>
     <ClCompile Include="CTilemapRenderer.cpp">
-      <Filter>소스 파일\04. Component\Tilemap Renderer</Filter>
+      <Filter>소스 파일\04. Component\TilemapRenderer</Filter>
     </ClCompile>
     <ClCompile Include="CGrid.cpp">
       <Filter>소스 파일\04. Component\Grid</Filter>
-    </ClCompile>
-    <ClCompile Include="CMap.cpp">
-      <Filter>소스 파일\03. Object\4. Map</Filter>
     </ClCompile>
     <ClCompile Include="CScript.cpp">
       <Filter>소스 파일\04. Component\Script</Filter>
@@ -352,6 +346,12 @@
     </ClCompile>
     <ClCompile Include="CTransform.cpp">
       <Filter>소스 파일\04. Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="CTilemap.cpp">
+      <Filter>소스 파일\04. Component\Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="CTile.cpp">
+      <Filter>소스 파일\05. Asset\4. Tile</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

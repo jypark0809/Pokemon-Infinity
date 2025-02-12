@@ -1,10 +1,10 @@
 #pragma once
 #include "CComponent.h"
+
 class CTilemapRenderer :
     public CComponent
 {
 private:
-
 
 public:
     void BeginPlay() override;
