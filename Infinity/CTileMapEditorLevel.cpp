@@ -1,37 +1,43 @@
 #include "pch.h"
-#include "CTileMapEditorLevel.h"
-#include "CTile.h"
+#include "CTilemapEditorLevel.h"
+#include "CObject.h"
+#include "CMap.h"
+#include "CGrid.h"
 
-CTileMapEditorLevel::CTileMapEditorLevel()
+CTilemapEditorLevel::CTilemapEditorLevel()
+	:m_Map(nullptr)
+{
+	m_Map = new CMap;
+	AddObject(m_Map, LayerType::MAP);
+}
+
+CTilemapEditorLevel::~CTilemapEditorLevel()
 {
 }
 
-CTileMapEditorLevel::~CTileMapEditorLevel()
+void CTilemapEditorLevel::BeginPlay()
+{
+
+}
+
+void CTilemapEditorLevel::Tick()
 {
 }
 
-void CTileMapEditorLevel::BeginPlay()
-{
-	CTile* pTile = new CTile;
-}
-
-void CTileMapEditorLevel::Tick()
+void CTilemapEditorLevel::FinalTick()
 {
 }
 
-void CTileMapEditorLevel::FinalTick()
+void CTilemapEditorLevel::Render(HDC _hdc)
+{
+	CLevel::Render(_hdc);
+}
+
+void CTilemapEditorLevel::OnEnter()
 {
 }
 
-void CTileMapEditorLevel::Render(HDC _Hdc)
-{
-}
-
-void CTileMapEditorLevel::OnEnter()
-{
-}
-
-void CTileMapEditorLevel::OnExit()
+void CTilemapEditorLevel::OnExit()
 {
 }
 

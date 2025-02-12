@@ -18,6 +18,9 @@ CFlipbookPlayer::~CFlipbookPlayer()
 	// TODO : Delete Flipbook
 }
 
+void CFlipbookPlayer::BeginPlay()
+{
+}
 
 void CFlipbookPlayer::Tick()
 {

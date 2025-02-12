@@ -45,10 +45,6 @@ public:
 	virtual void FinalTick();
 	virtual void Render(HDC hdc);
 
-	// OnCollisionEnter2D / OnCollisionExit2D
-	// virtual void OnComponentBeginOverlap(Collider* collider, Collider* other);
-	// virtual void OnComponentEndOverlap(Collider* collider, Collider* other);
-
 public:
 	CObject();
 	virtual ~CObject();

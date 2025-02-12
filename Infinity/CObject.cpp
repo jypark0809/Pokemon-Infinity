@@ -59,7 +59,8 @@ CComponent* CObject::GetComponent(ComponentType _Type)
 
 Vec2 CObject::GetViewPos()
 {
-	return GetComponent<CCamera>()->GetViewPos(m_Pos);
+	return GetPos();
+	// return GetComponent<CCamera>()->GetViewPos(m_Pos);
 }
 
 void CObject::Destroy()

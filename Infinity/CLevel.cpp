@@ -49,6 +49,8 @@ void CLevel::FinalTick()
 
 void CLevel::Render(HDC _dc)
 {
+	// TODO : Order in Layer 순서에 맞게 랜더링 하도록 수정
+
 	for (UINT i = 0; i < (UINT)LayerType::COUNT; ++i)
 	{
 		vector<CObject*>& veCObject = m_Objects[i];

@@ -5,6 +5,7 @@
 #include "CGameLevel.h"
 #include "CSpriteEditorLevel.h"
 #include "CFlipbookEditorLevel.h"
+#include "CTilemapEditorLevel.h"
 
 LevelManager::LevelManager()
 	: m_Levels{}
@@ -24,11 +25,11 @@ void LevelManager::Init()
 	m_Levels[LevelType::GAME] = new CGameLevel;
 	m_Levels[LevelType::SPRITE_EDITOR] = new CSpriteEditorLevel;
 	m_Levels[LevelType::FLIPBOOK_EDITOR] = new CFlipbookEditorLevel;
-	m_Levels[LevelType::TILEMAP_EDITOR] = nullptr;
+	m_Levels[LevelType::TILEMAP_EDITOR] = new CTilemapEditorLevel;
 	
 
 	// StartLevel 을 현재 레벨로 지정
-	LoadLevel(LevelType::FLIPBOOK_EDITOR);
+	LoadLevel(LevelType::TILEMAP_EDITOR);
 }
 
 void LevelManager::Tick()

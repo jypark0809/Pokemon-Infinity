@@ -13,14 +13,13 @@ private:
     bool                m_Loop;
 
 public:
-    void AddFlipbook(int _Idx, CFlipbook* _Flipbook);
-    void Play(int _Idx, bool _Loop);
-
-
-public:
+    virtual void BeginPlay() override;
     virtual void Tick() override;
     virtual void FinalTick() override;
-    void Render(HDC _dc);
+    virtual void Render(HDC _hdc) override;
+
+    void AddFlipbook(int _Idx, CFlipbook* _Flipbook);
+    void Play(int _Idx, bool _Loop);
 
 public:
     CFlipbookPlayer();

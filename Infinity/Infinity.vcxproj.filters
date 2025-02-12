@@ -81,9 +81,6 @@
     <Filter Include="소스 파일\02. Level\3. Sprite Editor">
       <UniqueIdentifier>{2e9204ee-8dff-41f4-9b58-fc8ac2fa804c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Level\5. TileMap Editor">
-      <UniqueIdentifier>{69e381ae-6b2b-483b-b795-dd22871b7b34}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\02. Level\4. Flipbook Editor">
       <UniqueIdentifier>{1f3644ea-6fa7-4184-84de-ba60a2ba086a}</UniqueIdentifier>
     </Filter>
@@ -95,6 +92,21 @@
     </Filter>
     <Filter Include="소스 파일\04. Component\Tilemap Renderer">
       <UniqueIdentifier>{d567d309-b85a-4cbf-9751-75f35774ce7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Level\5. Tilemap Editor">
+      <UniqueIdentifier>{69e381ae-6b2b-483b-b795-dd22871b7b34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\4. Map">
+      <UniqueIdentifier>{e19ee83d-b439-4ff0-bb90-8a508b75c979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Component\Grid">
+      <UniqueIdentifier>{753af95f-8a60-45c6-a214-29ccef1c219e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Component\Script">
+      <UniqueIdentifier>{1c036dc6-4ddb-4a12-8c8f-5c359872d9dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Component\Transform">
+      <UniqueIdentifier>{a223ad91-73fe-4f30-9efd-0b189b8a13c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -188,8 +200,8 @@
     <ClInclude Include="CCamera.h">
       <Filter>소스 파일\04. Component\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="CTileMapEditorLevel.h">
-      <Filter>소스 파일\02. Level\5. TileMap Editor</Filter>
+    <ClInclude Include="CTilemapEditorLevel.h">
+      <Filter>소스 파일\02. Level\5. Tilemap Editor</Filter>
     </ClInclude>
     <ClInclude Include="CPokemon.h">
       <Filter>소스 파일\03. Object\3. Pokemon</Filter>
@@ -205,6 +217,21 @@
     </ClInclude>
     <ClInclude Include="CTilemapRenderer.h">
       <Filter>소스 파일\04. Component\Tilemap Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="CGrid.h">
+      <Filter>소스 파일\04. Component\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="CMap.h">
+      <Filter>소스 파일\03. Object\4. Map</Filter>
+    </ClInclude>
+    <ClInclude Include="CScript.h">
+      <Filter>소스 파일\04. Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameObject.h">
+      <Filter>소스 파일\03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CTransform.h">
+      <Filter>소스 파일\04. Component\Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -293,8 +320,8 @@
     <ClCompile Include="CCamera.cpp">
       <Filter>소스 파일\04. Component\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="CTileMapEditorLevel.cpp">
-      <Filter>소스 파일\02. Level\5. TileMap Editor</Filter>
+    <ClCompile Include="CTilemapEditorLevel.cpp">
+      <Filter>소스 파일\02. Level\5. Tilemap Editor</Filter>
     </ClCompile>
     <ClCompile Include="CPokemon.cpp">
       <Filter>소스 파일\03. Object\3. Pokemon</Filter>
@@ -316,6 +343,21 @@
     </ClCompile>
     <ClCompile Include="CTilemapRenderer.cpp">
       <Filter>소스 파일\04. Component\Tilemap Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="CGrid.cpp">
+      <Filter>소스 파일\04. Component\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="CMap.cpp">
+      <Filter>소스 파일\03. Object\4. Map</Filter>
+    </ClCompile>
+    <ClCompile Include="CScript.cpp">
+      <Filter>소스 파일\04. Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameObject.cpp">
+      <Filter>소스 파일\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CTransform.cpp">
+      <Filter>소스 파일\04. Component\Transform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

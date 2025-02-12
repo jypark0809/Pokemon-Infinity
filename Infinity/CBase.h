@@ -7,8 +7,8 @@ private:
 	wstring		m_Name; // 오브젝트 이름
 
 public:
-	void SetName(const wstring& _Name) { m_Name = _Name; }
 	const wstring& GetName() { return m_Name; }
+	void SetName(const wstring& _Name) { m_Name = _Name; }
 
 	UINT GetID() { return m_ID; }
 

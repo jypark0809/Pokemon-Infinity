@@ -15,10 +15,6 @@ CPlayer::CPlayer()
 	, m_Dir(Dir::DOWN)
 	, m_Speed(5.f)
 {
-	// Camera
-	m_Camera = AddComponent<CCamera>();
-	m_Camera->SetTarget(this);
-
 	m_fbPlayer = AddComponent<CFlipbookPlayer>();
 	CTexture* pAtlasTex = AssetManager::GetInstance()->LoadTexture(L"NPC_Red", L"Texture\\Characters\\NPC_Red.png");
 
