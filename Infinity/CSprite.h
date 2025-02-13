@@ -61,6 +61,7 @@ public:
     virtual int Load(const wstring& _RelativePath) override;
     virtual int Save(const wstring& _RelativePath) override;
     void Create(CTexture* _Atlas, Vec2 _LeftTop, Vec2 _Size, Vec2 _Offset, float _Duration = 0.f);
+    void Render(HDC _hdc, Vec2 _OriginDest);
 
 public:
     CSprite();

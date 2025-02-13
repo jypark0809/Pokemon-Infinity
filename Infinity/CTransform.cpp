@@ -30,3 +30,8 @@ void CTransform::FinalTick()
 void CTransform::Render(HDC _hdc)
 {
 }
+
+Vec2 CTransform::GetViewPos()
+{
+	return m_Position;
+}

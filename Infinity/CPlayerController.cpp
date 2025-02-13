@@ -6,11 +6,13 @@
 #include "CCamera.h"
 #include "CTransform.h"
 #include "CFlipbookPlayer.h"
+#include "CSpriteRenderer.h"
 #include "CSprite.h"
 #include "CFlipbook.h"
 
 CPlayerController::CPlayerController()
 	: m_fbPlayer(nullptr)
+	, m_spRenderer(nullptr)
 	, m_State(PlayerState::IDLE)
 	, m_Dir(Dir::DOWN)
 	, m_Speed(5.f)
@@ -26,7 +28,11 @@ void CPlayerController::BeginPlay()
 	Vec2 vResolution = CEngine::GetInstance()->GetResolution();
 	GetOwner()->GetComponent<CTransform>()->SetPosition(Vec2(vResolution.x / 2, vResolution.y / 2));
 
+	// FSM
 	m_fbPlayer = GetOwner()->AddComponent<CFlipbookPlayer>();
+	m_spRenderer = GetOwner()->AddComponent<CSpriteRenderer>();
+	m_fbPlayer->SetSpriteRenderer(m_spRenderer);
+
 	m_fbPlayer->AddFlipbook(0, AssetManager::GetInstance()->LoadFlipbook(L"Red_Move_Down", L"Flipbook\\Red_Move_Down.flip"));
 	//m_fbPlayer->AddFlipbook(1, AssetManager::GetInstance()->LoadFlipbook(L"IDLE_LEFT", L"Flipbook\\IDLE_LEFT.flip"));
 	//m_fbPlayer->AddFlipbook(2, AssetManager::GetInstance()->LoadFlipbook(L"IDLE_RIGHT", L"Flipbook\\IDLE_RIGHT.flip"));
@@ -61,7 +67,6 @@ void CPlayerController::FinalTick()
 
 void CPlayerController::Render(HDC _dc)
 {
-	m_fbPlayer->Render(_dc);
 }
 
 void CPlayerController::TickIdle()

@@ -19,7 +19,7 @@ public:
 
     virtual void BeginPlay();
     virtual void Tick();
-    virtual void FinalTick() = 0;
+    virtual void FinalTick();
     virtual void Render(HDC _hdc);
 
 public:

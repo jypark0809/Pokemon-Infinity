@@ -20,7 +20,6 @@ CSpriteEditorLevel::CSpriteEditorLevel()
 
 CSpriteEditorLevel::~CSpriteEditorLevel()
 {
-    // 메모리 해제?
 }
 
 void CSpriteEditorLevel::BeginPlay()

@@ -2,15 +2,18 @@
 #include "CLevel.h"
 
 class CGrid;
+class CTexture;
 class CTilemap;
 
 class CTilemapEditorLevel :
     public CLevel
 {
 private:
-    HWND                m_SubWindow;
+    HWND                m_SubWnd;
+    HDC                 m_hSubDC;
+    CTexture*           m_SubBackBuffer;
+
     CGrid*              m_Grid;
-    vector<CTilemap*>   m_vecTilemap;
 
 public:
     virtual void BeginPlay() override;
@@ -24,6 +27,9 @@ public:
     bool Cango(Vec2Int _CellPos);
 
 private:
+    int SaveMap(const wstring& _RelativePath);
+    int LoatMap(const wstring& _RelativePath);
+
     void CreateSubWindow();
     void DestroySubWindow();
 
@@ -33,3 +39,4 @@ public:
     ~CTilemapEditorLevel();
 };
 
+LRESULT CALLBACK    TilemapEditorProc(HWND, UINT, WPARAM, LPARAM);

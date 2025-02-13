@@ -28,6 +28,24 @@ void CSprite::Create(CTexture* _Atlas, Vec2 _LeftTop, Vec2 _Size, Vec2 _Offset, 
 	m_Duration = _Duration;
 }
 
+void CSprite::Render(HDC _hdc, Vec2 _OriginDest)
+{
+	BLENDFUNCTION blend = {};
+	blend.BlendOp = AC_SRC_OVER;
+	blend.BlendFlags = 0;
+	blend.SourceConstantAlpha = 255; // 추가 알파값
+	blend.AlphaFormat = AC_SRC_ALPHA; // 알파 채널의 알파값을 투명도로 사용
+
+	AlphaBlend(_hdc
+		, _OriginDest.x + m_Offset.x
+		, _OriginDest.y + m_Offset.y
+		, m_Size.x, m_Size.y
+		, m_Atlas->GetDC()
+		, m_LeftTop.x, m_LeftTop.y
+		, m_Size.x, m_Size.y
+		, blend);
+}
+
 
 int CSprite::Save(const wstring& _RelativePath)
 {

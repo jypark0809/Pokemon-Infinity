@@ -157,11 +157,12 @@
     <ClInclude Include="CGrid.h" />
     <ClInclude Include="CLevel.h" />
     <ClInclude Include="CPlayerController.h" />
-    <ClInclude Include="CPokemon.h" />
+    <ClInclude Include="CRenderer.h" />
     <ClInclude Include="CScript.h" />
     <ClInclude Include="CSelectGDI.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpriteEditorLevel.h" />
+    <ClInclude Include="CSpriteRenderer.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
     <ClInclude Include="CTilemap.h" />
@@ -199,11 +200,12 @@
     <ClCompile Include="CGrid.cpp" />
     <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CPlayerController.cpp" />
-    <ClCompile Include="CPokemon.cpp" />
+    <ClCompile Include="CRenderer.cpp" />
     <ClCompile Include="CScript.cpp" />
     <ClCompile Include="CSelectGDI.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpriteEditorLevel.cpp" />
+    <ClCompile Include="CSpriteRenderer.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTilemap.cpp" />

@@ -15,8 +15,8 @@ CCamera::~CCamera()
 
 void CCamera::BeginPlay()
 {
-	Vec2 vResolution = CEngine::GetInstance()->GetResolution();
-	m_LookAt = (vResolution / 2.f);
+	m_Resolution = CEngine::GetInstance()->GetResolution();
+	m_LookAt = (m_Resolution / 2.f);
 }
 
 void CCamera::Tick()
@@ -25,22 +25,15 @@ void CCamera::Tick()
 
 void CCamera::FinalTick()
 {
-	FollowTarget();
+	if (m_Target)
+		m_LookAt = m_Target->GetComponent<CTransform>()->GetPosition();
+	else
+		m_LookAt = GetOwner()->GetComponent<CTransform>()->GetPosition();
 
-	// 해상도 중심과, 카메라 LookAt 간의 차이값을 계산
-	Vec2 vResolution = CEngine::GetInstance()->GetResolution();
-	m_Diff = (m_LookAt + m_LookAtOffset) - (vResolution / 2.f);
+	m_Diff = (m_LookAt + m_LookAtOffset) - (m_Resolution / 2.f);
 }
 
 void CCamera::Render(HDC hdc)
 {
 	// POSTPROC
-}
-
-void CCamera::FollowTarget()
-{
-	if (nullptr == m_Target)
-		return;
-
-	m_LookAt = m_Target->GetComponent<CTransform>()->GetPosition();
 }

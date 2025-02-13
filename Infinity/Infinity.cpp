@@ -1,9 +1,9 @@
 ﻿#include "pch.h"
 #include "Infinity.h"
 #include <crtdbg.h>
-#include "AssetManager.h"
 #include "LevelManager.h"
 #include "CSpriteEditorLevel.h"
+#include "CTilemapEditorLevel.h"
 
 // 전역 변수
 HINSTANCE   g_hInst = nullptr;
@@ -13,7 +13,6 @@ HWND        g_hWnd = nullptr;
 ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-LRESULT CALLBACK    TilemapEditorProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    GridByCellSizeProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    NineSlicingProc(HWND, UINT, WPARAM, LPARAM);
 
@@ -176,42 +175,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
-}
-
-LRESULT CALLBACK TilemapEditorProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    switch (message)
-    {
-    case WM_COMMAND:
-    {
-        int wmId = LOWORD(wParam);
-        // 메뉴 선택을 구문 분석합니다:
-        switch (wmId)
-        {
-        case IDM_EXIT:
-            DestroyWindow(hWnd);
-            break;
-        default:
-            return DefWindowProc(hWnd, message, wParam, lParam);
-        }
-    }
-    break;
-    case WM_PAINT:
-    {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-
-        EndPaint(hWnd, &ps);
-    }
-    break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }

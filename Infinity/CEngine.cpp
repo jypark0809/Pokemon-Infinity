@@ -11,7 +11,7 @@
 #include "CTexture.h"
 
 CEngine::CEngine()
-	: m_hWnd(nullptr)
+	: m_hMainWnd(nullptr)
 	, m_Resolution{}
 	, m_hdc(nullptr)
 	, m_BackBuffer(nullptr)
@@ -22,7 +22,7 @@ CEngine::CEngine()
 
 CEngine::~CEngine()
 {
-	ReleaseDC(m_hWnd, m_hdc);
+	ReleaseDC(m_hMainWnd, m_hdc);
 
 	// Delete GDI OBject
 	for (UINT i = 0; i < (UINT)PEN_TYPE::COUNT; ++i)
@@ -38,8 +38,8 @@ CEngine::~CEngine()
 
 int CEngine::Init(HWND _hWnd, int _Width, int _Height)
 {
-	m_hWnd = _hWnd;
-	m_hdc = GetDC(m_hWnd);
+	m_hMainWnd = _hWnd;
+	m_hdc = GetDC(m_hMainWnd);
 
 	// 윈도우 크기 변경
 	ChangeWindowSize(_Width, _Height);
@@ -111,10 +111,10 @@ void CEngine::ChangeWindowSize(int _Width, int _Height)
 	// 설정한 해상도에 따른 윈도우의 크기 계산
 	// GetMenu(m_hWnd) : 해당 윈도우에 메뉴가 없다면 nullptr, 있다면 1을 반환한다.
 	// !! : 이중부정 연산자는 GetMenu(m_hWnd)의 반환값을 0 또는 1로 변환한다.
-	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, !!GetMenu(m_hWnd));
+	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, !!GetMenu(m_hMainWnd));
 
 	// 윈도우 크기 및 위치 설정
-	SetWindowPos(m_hWnd
+	SetWindowPos(m_hMainWnd
 		, nullptr
 		, 0
 		, 0

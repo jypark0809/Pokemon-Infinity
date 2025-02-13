@@ -9,6 +9,7 @@ enum PlayerState
 };
 
 class CFlipbookPlayer;
+class CSpriteRenderer;
 
 class CPlayerController :
     public CScript
@@ -18,6 +19,7 @@ private:
 	Dir m_Dir;
 	float m_Speed;
 	CFlipbookPlayer* m_fbPlayer;
+	CSpriteRenderer* m_spRenderer;
 
 private:
 	void SetDir(Dir _Dir);

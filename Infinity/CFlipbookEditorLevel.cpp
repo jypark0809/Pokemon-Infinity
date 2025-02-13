@@ -53,33 +53,16 @@ void CFlipbookEditorLevel::FinalTick()
     }
 }
 
-void CFlipbookEditorLevel::Render(HDC _Hdc)
+void CFlipbookEditorLevel::Render(HDC _hdc)
 {
     if (m_Sprites.empty())
         return;
 
-    Vec2 vResolution = CEngine::GetInstance()->GetResolution();
     CSprite* pSprite = m_Sprites[m_Index];
+    Vec2 vResolution = CEngine::GetInstance()->GetResolution();
+    Vec2 OriginDest = Vec2((vResolution.x - pSprite->GetSize().x) / 2, (vResolution.y - pSprite->GetSize().y) / 2);
 
-    CTexture* pAtlas = pSprite->GetAltasTexture();
-    Vec2 vLeftTop = pSprite->GetLeftTop();
-    Vec2 vSize = pSprite->GetSize();
-    Vec2 vOffset = pSprite->GetOffset();
-
-    BLENDFUNCTION blend = {};
-    blend.BlendOp = AC_SRC_OVER;
-    blend.BlendFlags = 0;
-    blend.SourceConstantAlpha = 255; // 추가 알파값
-    blend.AlphaFormat = AC_SRC_ALPHA; // 알파 채널의 알파값을 투명도로 사용
-
-    AlphaBlend(_Hdc
-        , (vResolution.x - pSprite->GetSize().x) / 2
-        , (vResolution.y - pSprite->GetSize().y) / 2
-        , vSize.x, vSize.y
-        , pAtlas->GetDC()
-        , vLeftTop.x, vLeftTop.y
-        , vSize.x, vSize.y
-        , blend);
+    pSprite->Render(_hdc, OriginDest);
 }
 
 void CFlipbookEditorLevel::OnEnter()

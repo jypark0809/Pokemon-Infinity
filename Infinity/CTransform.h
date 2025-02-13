@@ -11,12 +11,13 @@ private:
     Vec2                    m_Scale;
 
 public:
-    Vec2 GetViewPos() { return m_Position; }
     Vec2 GetPosition() { return m_Position; }
     void SetPosition(Vec2 _position) { m_Position = _position; }
 
     Vec2 GetScale() { return m_Scale; }
     void SetScale(Vec2 _Scale) { m_Scale = _Scale; }
+
+    Vec2 GetViewPos();
 
     virtual void BeginPlay() override;
     virtual void Tick() override;

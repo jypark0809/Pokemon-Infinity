@@ -19,6 +19,10 @@ void CComponent::Tick()
 {
 }
 
+void CComponent::FinalTick()
+{
+}
+
 void CComponent::Render(HDC _hdc)
 {
 }

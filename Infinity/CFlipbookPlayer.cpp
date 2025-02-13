@@ -1,14 +1,15 @@
 #include "pch.h"
 #include "CFlipbookPlayer.h"
 #include "TimeManager.h"
+#include "CTransform.h"
+#include "CSpriteRenderer.h"
 #include "CTexture.h"
 #include "CSprite.h"
 #include "CFlipbook.h"
-#include "CGameObject.h"
-#include "CTransform.h"
+// #include "CGameObject.h"
 
 CFlipbookPlayer::CFlipbookPlayer()
-	: CComponent(ComponentType::FLIPBOOK_PLAYER)
+	: CComponent(ComponentType::FLIPBOOKPLAYER)
 	, m_CurFlip(nullptr)
 	, m_Loop(false)
 {
@@ -32,8 +33,12 @@ void CFlipbookPlayer::FinalTick()
 	if (!m_CurFlip)
 		return;
 
-	m_CurFlip->FinalTick();
+	// SpriteRenderer
+	CSprite* pSprite = m_CurFlip->GetSprite();
+	m_spRenderer->SetSprite(pSprite);
 
+	// Flipbook
+	m_CurFlip->FinalTick();
 	if (m_CurFlip->IsCompleted() == true)
 	{
 		if (m_Loop == true)
@@ -41,31 +46,8 @@ void CFlipbookPlayer::FinalTick()
 	}
 }
 
-void CFlipbookPlayer::Render(HDC _dc)
+void CFlipbookPlayer::Render(HDC _hdc)
 {
-	CSprite* pSprite	= m_CurFlip->GetSprite();
-
-	CTexture* pAtlas	= pSprite->GetAltasTexture();
-	Vec2 vLeftTop		= pSprite->GetLeftTop();
-	Vec2 vSize			= pSprite->GetSize();
-	Vec2 vOffset		= pSprite->GetOffset();
-
-	Vec2 vPos = GetOwner()->GetComponent<CTransform>()->GetViewPos();
-
-	BLENDFUNCTION blend = {};
-	blend.BlendOp = AC_SRC_OVER;
-	blend.BlendFlags = 0;
-	blend.SourceConstantAlpha = 255; // 추가 알파값
-	blend.AlphaFormat = AC_SRC_ALPHA; // 알파 채널의 알파값을 투명도로 사용
-
-	AlphaBlend(_dc
-		, vPos.x - vSize.x / 2.f + vOffset.x
-		, vPos.y - vSize.y / 2.f + vOffset.y
-		, vSize.x, vSize.y
-		, pAtlas->GetDC()
-		, vLeftTop.x, vLeftTop.y
-		, vSize.x, vSize.y
-		, blend);
 }
 
 void CFlipbookPlayer::Play(int _Idx, bool _Loop)

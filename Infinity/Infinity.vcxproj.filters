@@ -93,9 +93,6 @@
     <Filter Include="소스 파일\04. Component\Transform">
       <UniqueIdentifier>{a223ad91-73fe-4f30-9efd-0b189b8a13c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\04. Component\TilemapRenderer">
-      <UniqueIdentifier>{d567d309-b85a-4cbf-9751-75f35774ce7b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\04. Component\Script">
       <UniqueIdentifier>{1c036dc6-4ddb-4a12-8c8f-5c359872d9dd}</UniqueIdentifier>
     </Filter>
@@ -105,8 +102,17 @@
     <Filter Include="소스 파일\05. Asset\4. Tile">
       <UniqueIdentifier>{f66e1adf-6e11-4f4f-acd1-e3967ccba1d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\03. Object\2. Pokemon">
-      <UniqueIdentifier>{ae5954a7-f12c-4142-8810-36c87df6ea2d}</UniqueIdentifier>
+    <Filter Include="소스 파일\05. Asset\5. Map">
+      <UniqueIdentifier>{22087195-4be0-44ec-97ef-e94567bc5183}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Component\Renderer">
+      <UniqueIdentifier>{2b591e27-cc9e-4e2a-998e-03ef542370e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Component\Renderer\SpriteRenderer">
+      <UniqueIdentifier>{1ad5d2f0-bc2c-4a02-9541-b6ab472fbe96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Component\Renderer\TilemapRenderer">
+      <UniqueIdentifier>{d567d309-b85a-4cbf-9751-75f35774ce7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +206,6 @@
     <ClInclude Include="CTilemapEditorLevel.h">
       <Filter>소스 파일\02. Level\5. Tilemap Editor</Filter>
     </ClInclude>
-    <ClInclude Include="CPokemon.h">
-      <Filter>소스 파일\03. Object\2. Pokemon</Filter>
-    </ClInclude>
     <ClInclude Include="CSpriteEditorLevel.h">
       <Filter>소스 파일\02. Level\3. Sprite Editor</Filter>
     </ClInclude>
@@ -210,7 +213,7 @@
       <Filter>소스 파일\02. Level\4. Flipbook Editor</Filter>
     </ClInclude>
     <ClInclude Include="CTilemapRenderer.h">
-      <Filter>소스 파일\04. Component\TilemapRenderer</Filter>
+      <Filter>소스 파일\04. Component\Renderer\TilemapRenderer</Filter>
     </ClInclude>
     <ClInclude Include="CGrid.h">
       <Filter>소스 파일\04. Component\Grid</Filter>
@@ -229,6 +232,12 @@
     </ClInclude>
     <ClInclude Include="CTile.h">
       <Filter>소스 파일\05. Asset\4. Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpriteRenderer.h">
+      <Filter>소스 파일\04. Component\Renderer\SpriteRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderer.h">
+      <Filter>소스 파일\04. Component\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -317,9 +326,6 @@
     <ClCompile Include="CTilemapEditorLevel.cpp">
       <Filter>소스 파일\02. Level\5. Tilemap Editor</Filter>
     </ClCompile>
-    <ClCompile Include="CPokemon.cpp">
-      <Filter>소스 파일\03. Object\2. Pokemon</Filter>
-    </ClCompile>
     <ClCompile Include="CSpriteEditorLevel.cpp">
       <Filter>소스 파일\02. Level\3. Sprite Editor</Filter>
     </ClCompile>
@@ -333,7 +339,7 @@
       <Filter>소스 파일\02. Level\4. Flipbook Editor</Filter>
     </ClCompile>
     <ClCompile Include="CTilemapRenderer.cpp">
-      <Filter>소스 파일\04. Component\TilemapRenderer</Filter>
+      <Filter>소스 파일\04. Component\Renderer\TilemapRenderer</Filter>
     </ClCompile>
     <ClCompile Include="CGrid.cpp">
       <Filter>소스 파일\04. Component\Grid</Filter>
@@ -352,6 +358,12 @@
     </ClCompile>
     <ClCompile Include="CTile.cpp">
       <Filter>소스 파일\05. Asset\4. Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpriteRenderer.cpp">
+      <Filter>소스 파일\04. Component\Renderer\SpriteRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderer.cpp">
+      <Filter>소스 파일\04. Component\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

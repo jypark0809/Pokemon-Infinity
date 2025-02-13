@@ -148,31 +148,6 @@ CAsset* LoadAssetInfo(FILE* _File, AssetType _type)
 }
 #pragma endregion
 
-// TODO : 파일명에 L"TileSprite_%d"가 강제로 추가되는 부분 수정
-void CreateTileSprite(const wstring _SpriteName, class CTexture* _AltasTex, int _Row, int _Col
-	, Vec2 _TileSize, vector<CSprite*>& _vecSprite)
-{
-	wstring strName = L"TileSprite_%d";
-
-	for (int i = 0; i < _Row; ++i)
-	{
-		for (int j = 0; j < _Col; ++j)
-		{
-			wchar_t szKey[255] = {};
-			swprintf_s(szKey, 255, strName.c_str(), (i * 8 + j));
-
-			CSprite* pSprite = AssetManager::GetInstance()->CreateSprite(szKey
-				, _AltasTex, Vec2(j * _TileSize.x, i * _TileSize.y), _TileSize, Vec2(0.f, 0.f));
-
-			_vecSprite.push_back(pSprite);
-
-			wstring path = L"Sprite\\";
-			path += pSprite->GetKey() + L".sprite";
-			pSprite->Save(path);
-		}
-	}
-}
-
 bool IsValid(CGameObject*& _Object)
 {
 	if (nullptr == _Object)
