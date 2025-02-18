@@ -24,6 +24,9 @@ public:
     void AddFlipbook(int _Idx, CFlipbook* _Flipbook);
     void Play(int _Idx, bool _Loop);
 
+    virtual int Save(FILE* _File) { return S_OK; }
+    virtual int Load(FILE* _File) { return S_OK; }
+
 public:
     CFlipbookPlayer();
     ~CFlipbookPlayer();

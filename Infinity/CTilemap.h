@@ -19,6 +19,8 @@ private:
 public:
     void SetGrid(CGrid* _Grid) { m_Grid = _Grid; }
     void SetTilemapRenderer(CTilemapRenderer* _tmRenderer) { m_tmRenderer = _tmRenderer; }
+
+    void AddTile(int _Column, int _Row, const wstring& _SpriteKey);
     vector<CTile*>& GetTileVector() { return m_vecTile; }
 
     void BeginPlay() override;
@@ -27,6 +29,9 @@ public:
     void Render(HDC _hdc) override;
 
     Vec2Int WorldToCell(Vec2 _Pos);
+
+    virtual int Save(FILE* _File) { return S_OK; }
+    virtual int Load(FILE* _File) { return S_OK; }
 
 public:
     CTilemap();

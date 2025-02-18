@@ -3,6 +3,8 @@
 class CTexture;
 class CSprite;
 class CFlipbook;
+class CTile;
+class CPrefab;
 
 class AssetManager
 {
@@ -12,6 +14,8 @@ private:
 	map<wstring, CTexture*>		m_Textures;
 	map<wstring, CSprite*>		m_Sprites;
 	map<wstring, CFlipbook*>	m_Flipbooks;
+	map<wstring, CTile*>		m_Tiles;
+	map<wstring, CPrefab*>		m_Prefabs;
 
 public:
 	void Init();
@@ -29,5 +33,13 @@ public:
 	CFlipbook* GetFlipbook(const wstring& _Key);
 	CFlipbook* LoadFlipbook(const wstring& _Key, const wstring& _RelativePath);
 	CFlipbook* CreateFlipbook(const wstring& _Key, const vector<CSprite*>& _vecSprite);
+
+	CTile* GetTile(const wstring& _Key);
+	CTile* LoadTile(const wstring& _Key, const wstring& _RelativePath);
+	CTile* CreateTile(const wstring& _Key, CSprite* _Sprite);
+
+	CPrefab* GetPrefab(const wstring& _Key);
+	CPrefab* LoadPrefab(const wstring& _Key, const wstring& _RelativePath);
+	CPrefab* CreatePrefab(const wstring& _Key, CGameObject* _GameObject);
 };
 

@@ -25,10 +25,15 @@ public:
     int GetRow() { return m_Row; }
     void SetRow(UINT _Row) { m_Row = _Row; }
 
+    void AddTilemap(CTilemap* _Tilemap) { m_vecTilemap.push_back(_Tilemap); }
+
     virtual void BeginPlay() override;
     virtual void Tick()override;
     virtual void FinalTick() override;
     virtual void Render(HDC _hdc) override;
+
+    virtual int Save(FILE* _File) { return S_OK; }
+    virtual int Load(FILE* _File) { return S_OK; }
 
 public:
     CGrid();

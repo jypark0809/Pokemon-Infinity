@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CTilemap.h"
+#include "AssetManager.h"
 #include "CTexture.h"
 #include "CSprite.h"
 #include "CGrid.h"
@@ -33,6 +34,19 @@ void CTilemap::FinalTick()
 
 void CTilemap::Render(HDC _hdc)
 {
+}
+
+void CTilemap::AddTile(int _Column, int _Row, const wstring& _TileKey)
+{
+	// 존재하지 않는 행렬위치를 지정한 경우
+	if (_Row < 0 || m_Row <= _Row || _Column < 0 || m_Column <= _Column)
+		return;
+
+	CTile* pTile = AssetManager::GetInstance()->GetTile(_TileKey);
+	assert(pTile);
+
+	int Idx = _Row * m_Column + _Column;
+	m_vecTile[Idx] = pTile;
 }
 
 Vec2Int CTilemap::WorldToCell(Vec2 _Pos)

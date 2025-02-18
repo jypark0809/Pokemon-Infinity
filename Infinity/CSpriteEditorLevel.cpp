@@ -3,9 +3,17 @@
 #include "KeyManager.h"
 #include "AssetManager.h"
 #include "TaskManager.h"
+
+#include "CGameObject.h"
+#include "CTransform.h"
+#include "CCamera.h"
+
 #include "CTexture.h"
 #include "CSprite.h"
 
+#include "CGrid.h"
+#include "CTilemap.h"
+#include "CTile.h"
 
 CSpriteEditorLevel::CSpriteEditorLevel()
 	: m_hMenu(nullptr)
@@ -13,6 +21,7 @@ CSpriteEditorLevel::CSpriteEditorLevel()
     , m_Texture(nullptr)
     , m_Sprites{}
     , m_SelectedSpriteIndex(-1)
+    , m_Camera(nullptr)
 {
 	m_hMenu = LoadMenu(nullptr, (LPCWSTR)IDR_Menu_SpriteEditor);
 	assert(m_hMenu);
@@ -24,6 +33,14 @@ CSpriteEditorLevel::~CSpriteEditorLevel()
 
 void CSpriteEditorLevel::BeginPlay()
 {
+    CLevel::BeginPlay();
+
+    CGameObject* pCamera = new CGameObject;
+    m_Camera = pCamera->AddComponent<CCamera>();
+    m_Camera->SetTarget(pCamera);
+    AddObject(pCamera, LayerType::CAMERA);
+
+
     if (!m_Texture)
         return;
 }
@@ -43,13 +60,13 @@ void CSpriteEditorLevel::Tick()
             Vec2 vSize = m_Sprites[i]->GetSize();           // 스프라이트의 크기
 
             // 마우스가 해당 스프라이트 위에 있는지 확인
-            bool OnMouse = (vMousePos.x >= vOrigin.x + vLeftTop.x &&
+            bool IsMouseOnSprite = (vMousePos.x >= vOrigin.x + vLeftTop.x &&
                 vMousePos.x <= vOrigin.x + vLeftTop.x + vSize.x &&
                 vMousePos.y >= vOrigin.y + vLeftTop.y &&
                 vMousePos.y <= vOrigin.y + vLeftTop.y + vSize.y);
 
             // 마우스 클릭 여부와 OnMouse 상태에 따라 색상 결정
-            if (KeyManager::GetInstance()->GetButtonDown(Key::LBUTTON) && OnMouse)
+            if (KeyManager::GetInstance()->GetButtonDown(Key::LBUTTON) && IsMouseOnSprite)
             {
                 m_SelectedSpriteIndex = i; // 클릭 시 선택된 스프라이트 인덱스 저장
             }
@@ -79,6 +96,8 @@ void CSpriteEditorLevel::Render(HDC _Hdc)
         return;
 
     Vec2 vResolution = CEngine::GetInstance()->GetResolution();
+    Vec2 vOrigin((vResolution.x - m_Texture->GetWidth()) / 2, (vResolution.y - m_Texture->GetHeight()) / 2);
+    Vec2 vLeftTop = m_Camera->GetViewPos(vOrigin);
     DrawCheckeredPattern(_Hdc, m_Texture->GetWidth(), m_Texture->GetHeight());
 
     BLENDFUNCTION blend = {};
@@ -88,8 +107,8 @@ void CSpriteEditorLevel::Render(HDC _Hdc)
     blend.AlphaFormat = AC_SRC_ALPHA; // 알파 채널의 알파값을 투명도로 사용
 
     AlphaBlend(_Hdc
-        , (vResolution.x - m_Texture->GetWidth()) / 2
-        , (vResolution.y - m_Texture->GetHeight()) / 2
+        , vLeftTop.x
+        , vLeftTop.y
         , m_Texture->GetWidth()
         , m_Texture->GetHeight()
         , m_Texture->GetDC()
@@ -147,15 +166,15 @@ void CSpriteEditorLevel::GridByCellSize(Vec2 _Size, Vec2 _LeftTop, Vec2 _Padding
     int atlasHeight = m_Texture->GetHeight();
 
     // 최대 행과 열 수를 계산합니다.
-    int maxRows = atlasHeight / (_Size.y + _Padding.y);
-    int maxCols = atlasWidth / (_Size.x + _Padding.x);
+    m_Rows = atlasHeight / (_Size.y + _Padding.y);
+    m_Columns = atlasWidth / (_Size.x + _Padding.x);
 
-    for (int i = 0; i < maxRows; ++i)
+    for (int i = 0; i < m_Rows; ++i)
     {
-        for (int j = 0; j < maxCols; ++j)
+        for (int j = 0; j < m_Columns; ++j)
         {
             wchar_t szKey[255] = {};
-            int index = i * maxCols + j;
+            int index = i * m_Columns + j;
             swprintf_s(szKey, 255, strName.c_str(), index);
 
             Vec2 vLeftTop((float)j * (_Size.x + _Padding.x) + _LeftTop.x, (float)i * (_Size.y + _Padding.y) + _LeftTop.y);
@@ -178,6 +197,34 @@ void CSpriteEditorLevel::GridByCellSize(Vec2 _Size, Vec2 _LeftTop, Vec2 _Padding
             m_Sprites.push_back(pSprite);
         }
     }
+}
+
+void CSpriteEditorLevel::CreateTilePalette()
+{
+    wstring tilemapName = m_Texture->GetName();
+    wstring tileName = tilemapName + L"_%d";
+    CTilemap* pTilemap = new CTilemap;
+    
+    for (size_t i = 0; i < m_Sprites.size(); ++i)
+    {
+        // Tile
+        wchar_t szKey[255] = {};
+        swprintf_s(szKey, 255, tileName.c_str(), i);
+        CTile* pTile = AssetManager::GetInstance()->CreateTile(szKey, m_Sprites[i]);
+
+        wstring Path = L"Tile\\";
+        Path = Path + szKey + L".tile";
+        pTile->SetRelativePath(Path);
+        pTile->Save(Path);
+        
+        int Col = i / m_Columns;
+        int Row = i % m_Columns;
+        pTilemap->AddTile(Col, Row, pTile->GetKey());
+    }
+
+    // TODO : Tilemap 저장
+
+    // delete pTilemap?
 }
 
 void CSpriteEditorLevel::Revert()

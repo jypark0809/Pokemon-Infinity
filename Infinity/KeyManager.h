@@ -34,8 +34,8 @@ class KeyManager
 	DECLARE_SINGLE(KeyManager);
 
 private:
-	Vec2				m_MousePos;
 	vector<KeyState>	m_KeyStates;
+	Vec2				m_MousePos;
 
 public:
 	void Init();

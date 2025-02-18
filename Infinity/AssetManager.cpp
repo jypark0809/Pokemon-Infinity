@@ -3,6 +3,8 @@
 #include "CTexture.h"
 #include "CSprite.h"
 #include "CFlipbook.h"
+#include "CTile.h"
+#include "CPrefab.h"
 
 AssetManager::AssetManager()
 {
@@ -65,6 +67,7 @@ CTexture* AssetManager::LoadTexture(const wstring& _Key, const wstring& _Relativ
 		return nullptr;
 	}
 
+	pTex->SetName(_Key);
 	pTex->SetKey(_Key);
 	pTex->SetRelativePath(_RelativePath);
 	m_Textures.insert(make_pair(_Key, pTex));
@@ -145,6 +148,7 @@ CFlipbook* AssetManager::LoadFlipbook(const wstring& _Key, const wstring& _Relat
 		return nullptr;
 	}
 
+	pFlipbook->SetName(_Key);
 	pFlipbook->SetKey(_Key);
 	pFlipbook->SetRelativePath(_RelativePath);
 	m_Flipbooks.insert(make_pair(_Key, pFlipbook));
@@ -169,6 +173,104 @@ CFlipbook* AssetManager::CreateFlipbook(const wstring& _Key, const vector<CSprit
 	m_Flipbooks.insert(make_pair(_Key, pFlipbook));
 
 	return pFlipbook;
+}
+
+CTile* AssetManager::GetTile(const wstring& _Key)
+{
+	map<wstring, CTile*>::iterator iter = m_Tiles.find(_Key);
+
+	if (iter == m_Tiles.end())
+		return nullptr;
+
+	return iter->second;
+}
+
+CTile* AssetManager::LoadTile(const wstring& _Key, const wstring& _RelativePath)
+{
+	CTile* pTile = GetTile(_Key);
+
+	if (nullptr != pTile)
+		return pTile;
+
+	pTile = new CTile;
+	if (FAILED(pTile->Load(_RelativePath)))
+	{
+		MessageBox(nullptr, L"Failed to load flipbook", L"AssetManager", MB_OK);
+		delete pTile;
+		return nullptr;
+	}
+
+	pTile->SetName(_Key);
+	pTile->SetKey(_Key);
+	pTile->SetRelativePath(_RelativePath);
+	m_Tiles.insert(make_pair(_Key, pTile));
+
+	return pTile;
+}
+
+CTile* AssetManager::CreateTile(const wstring& _Key, CSprite* _Sprite)
+{
+	CTile* pTile = GetTile(_Key);
+
+	if (nullptr != pTile)
+		return pTile;
+
+	pTile = new CTile;
+	pTile->SetSprite(_Sprite);
+	pTile->SetName(_Key);
+	pTile->SetKey(_Key);
+	m_Tiles.insert(make_pair(_Key, pTile));
+
+	return pTile;
+}
+
+CPrefab* AssetManager::GetPrefab(const wstring& _Key)
+{
+	map<wstring, CPrefab*>::iterator iter = m_Prefabs.find(_Key);
+
+	if (iter == m_Prefabs.end())
+		return nullptr;
+
+	return iter->second;
+}
+
+CPrefab* AssetManager::LoadPrefab(const wstring& _Key, const wstring& _RelativePath)
+{
+	CPrefab* pPrefab = GetPrefab(_Key);
+
+	if (nullptr != pPrefab)
+		return pPrefab;
+
+	pPrefab = new CPrefab;
+	if (FAILED(pPrefab->Load(_RelativePath)))
+	{
+		MessageBox(nullptr, L"Failed to load flipbook", L"AssetManager", MB_OK);
+		delete pPrefab;
+		return nullptr;
+	}
+
+	pPrefab->SetName(_Key);
+	pPrefab->SetKey(_Key);
+	pPrefab->SetRelativePath(_RelativePath);
+	m_Prefabs.insert(make_pair(_Key, pPrefab));
+
+	return pPrefab;
+}
+
+CPrefab* AssetManager::CreatePrefab(const wstring& _Key, CGameObject* _GameObject)
+{
+	CPrefab* pPrefab = GetPrefab(_Key);
+
+	if (nullptr != pPrefab)
+		return pPrefab;
+
+	pPrefab = new CPrefab;
+	pPrefab->SetName(_Key);
+	pPrefab->SetKey(_Key);
+	pPrefab->SetObject(_GameObject);
+	m_Prefabs.insert(make_pair(_Key, pPrefab));
+
+	return pPrefab;
 }
 
 

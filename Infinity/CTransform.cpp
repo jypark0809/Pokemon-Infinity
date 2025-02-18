@@ -9,6 +9,14 @@ CTransform::CTransform()
 	, m_Rotation(Vec2(0.f, 0.f))
 	, m_Scale(Vec2(1.f, 1.f))
 {
+	/*CGameObject* pParent = GetOwner()->GetParent();
+	if (pParent)
+	{
+		CTransform* pParentTransform = pParent->GetComponent<CTransform>();
+		m_ParentTransform = pParentTransform;
+		pParentTransform->AddChild(this);
+	}*/
+		
 }
 
 CTransform::~CTransform()
@@ -33,5 +41,6 @@ void CTransform::Render(HDC _hdc)
 
 Vec2 CTransform::GetViewPos()
 {
+	// TODO : Camera
 	return m_Position;
 }

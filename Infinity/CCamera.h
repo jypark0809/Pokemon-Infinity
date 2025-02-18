@@ -23,6 +23,9 @@ public:
 	virtual void FinalTick() override;
 	virtual void Render(HDC hdc) override;
 
+	virtual int Save(FILE* _File) { return S_OK; }
+	virtual int Load(FILE* _File) { return S_OK; }
+
 public:
 	CCamera();
 	virtual ~CCamera();

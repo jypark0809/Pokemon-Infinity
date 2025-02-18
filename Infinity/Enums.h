@@ -28,13 +28,13 @@ enum class BRUSH_TYPE
 
 enum class LayerType
 {
-	DEFAULT,
+	NONE,
+	CAMERA,
 	MAP, // Map의 TilemapRenderer가 랜더링하는것이기 때문에 LayerType이 굳이 필요할까...?
 	TILE,
 	PLAYER,
 	MONSTER,
 	
-
 	UI = 31,
 	COUNT = 32
 };
@@ -61,6 +61,7 @@ enum class AssetType
 	SPRITE,
 	FLIPBOOK,
 	TILE,
+	PREFAB,
 	SOUND,
 };
 

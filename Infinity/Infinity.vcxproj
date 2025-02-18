@@ -157,6 +157,7 @@
     <ClInclude Include="CGrid.h" />
     <ClInclude Include="CLevel.h" />
     <ClInclude Include="CPlayerController.h" />
+    <ClInclude Include="CPrefab.h" />
     <ClInclude Include="CRenderer.h" />
     <ClInclude Include="CScript.h" />
     <ClInclude Include="CSelectGDI.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="CGrid.cpp" />
     <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CPlayerController.cpp" />
+    <ClCompile Include="CPrefab.cpp" />
     <ClCompile Include="CRenderer.cpp" />
     <ClCompile Include="CScript.cpp" />
     <ClCompile Include="CSelectGDI.cpp" />

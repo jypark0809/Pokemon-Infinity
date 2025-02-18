@@ -23,6 +23,9 @@ public:
     void FinalTick() override;
     void Render(HDC _hdc) override;
 
+    virtual int Save(FILE* _File) { return S_OK; }
+    virtual int Load(FILE* _File) { return S_OK; }
+
 public:
     CTilemapRenderer();
     ~CTilemapRenderer();

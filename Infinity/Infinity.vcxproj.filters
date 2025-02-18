@@ -102,9 +102,6 @@
     <Filter Include="소스 파일\05. Asset\4. Tile">
       <UniqueIdentifier>{f66e1adf-6e11-4f4f-acd1-e3967ccba1d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\05. Asset\5. Map">
-      <UniqueIdentifier>{22087195-4be0-44ec-97ef-e94567bc5183}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\04. Component\Renderer">
       <UniqueIdentifier>{2b591e27-cc9e-4e2a-998e-03ef542370e9}</UniqueIdentifier>
     </Filter>
@@ -113,6 +110,9 @@
     </Filter>
     <Filter Include="소스 파일\04. Component\Renderer\TilemapRenderer">
       <UniqueIdentifier>{d567d309-b85a-4cbf-9751-75f35774ce7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05. Asset\5. Prefab">
+      <UniqueIdentifier>{22087195-4be0-44ec-97ef-e94567bc5183}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +239,9 @@
     <ClInclude Include="CRenderer.h">
       <Filter>소스 파일\04. Component\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="CPrefab.h">
+      <Filter>소스 파일\05. Asset\5. Prefab</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Infinity.rc">
@@ -364,6 +367,9 @@
     </ClCompile>
     <ClCompile Include="CRenderer.cpp">
       <Filter>소스 파일\04. Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="CPrefab.cpp">
+      <Filter>소스 파일\05. Asset\5. Prefab</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

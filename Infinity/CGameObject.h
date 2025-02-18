@@ -7,11 +7,28 @@ class CGameObject :
     public CBase
 {
 private:
-	vector<CComponent*> m_vecComponent;
-	LayerType			m_Layer;
-	bool				m_Dead;			// 오브젝트가 삭제예정 상태인지 체크하는 용도
+	CGameObject*			m_Parent;		// 부모 오브젝트
+	vector<CGameObject*>	m_Children;		// 자식 오브젝트들
+	vector<CComponent*>		m_vecComponent;	// 컴포넌트
+	LayerType				m_Layer;		// 레이어
+	bool					m_Dead;			// 오브젝트가 삭제예정 상태인지 체크하는 용도
 
 public:
+	virtual void BeginPlay();
+	virtual void Tick();
+	virtual void FinalTick();
+	virtual void Render(HDC _hdc);
+
+	void SetParent(CGameObject* _Parent)
+	{
+		m_Parent = _Parent;
+		if (_Parent) {
+			_Parent->AddChild(this);
+		}
+	}
+	CGameObject* GetParent() { return m_Parent; }
+	void AddChild(CGameObject* _Child)	{ m_Children.push_back(_Child);	}
+
 	void SetLayerType(LayerType _Layer) { m_Layer = _Layer; }
 	LayerType GetLayerType() { return m_Layer; }
 
@@ -19,6 +36,9 @@ public:
 	CComponent* GetComponent(ComponentType _Type);
 	bool IsDead() { return m_Dead; }
 	void Destroy();
+
+	int Load(FILE* _File);
+	int Save(FILE* _File);
 
 	template<typename T>
 	T*GetComponent()
@@ -50,11 +70,6 @@ public:
 
 		return pComponent;
 	}
-
-	virtual void BeginPlay();
-	virtual void Tick();
-	virtual void FinalTick();
-	virtual void Render(HDC _hdc);
 
 public:
 	CGameObject();
