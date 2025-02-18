@@ -95,8 +95,11 @@ void CFlipbookEditorLevel::AddSprite()
     if (GetOpenFileName(&Desc))
     {
         fs::path filePath(szFilePath);
+        wstring fullPath = filePath.wstring();
+        wstring relativePath = fullPath.substr(fullPath.find(L"Sprite\\"));
+
         wstring fileName = filePath.stem().wstring(); // .sprite 제외
-        CSprite* pSprite = AssetManager::GetInstance()->LoadSprite(fileName, szFilePath);
+        CSprite* pSprite = AssetManager::GetInstance()->LoadSprite(fileName, relativePath);
         m_Sprites.push_back(pSprite);
 
         // Sprite Info 업데이트

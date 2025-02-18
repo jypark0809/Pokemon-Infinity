@@ -49,9 +49,6 @@ void CSprite::Render(HDC _hdc, Vec2 _OriginDest)
 
 int CSprite::Save(const wstring& _RelativePath)
 {
-	// 에셋이 저정되는 경로 (로딩된 에셋의 원본파일 위치)
-	SetRelativePath(_RelativePath);
-
 	// 파일 최종 경로
 	fs::path fullPath = CONTENT_PATH;
 	fullPath /= _RelativePath;

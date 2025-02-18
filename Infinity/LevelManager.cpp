@@ -29,7 +29,7 @@ void LevelManager::Init()
 	
 
 	// StartLevel 을 현재 레벨로 지정
-	LoadLevel(LevelType::TILEMAP_EDITOR);
+	LoadLevel(LevelType::GAME);
 }
 
 void LevelManager::Tick()

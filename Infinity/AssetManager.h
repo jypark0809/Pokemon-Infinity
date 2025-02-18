@@ -20,7 +20,10 @@ private:
 public:
 	void Init();
 
-	const fs::path& GetContentPath() { return m_ContentPath; }
+	const fs::path& GetContentPath()
+	{ 
+		return m_ContentPath;
+	}
 
 	CTexture* GetTexture(const wstring& _Key);
 	CTexture* LoadTexture(const wstring& _Key, const wstring& _RelativePath);
