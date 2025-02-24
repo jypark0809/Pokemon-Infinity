@@ -10,6 +10,7 @@ CTilemap::CTilemap()
 	:CComponent(ComponentType::TILEMAP)
 	, m_Grid(nullptr)
 	, m_tmRenderer(nullptr)
+	, m_vecTile{}
 {
 }
 
@@ -19,9 +20,7 @@ CTilemap::~CTilemap()
 
 void CTilemap::BeginPlay()
 {
-	m_TileSize = m_Grid->GetTileSize();
-	m_Column = m_Grid->GetColumn();
-	m_Row = m_Grid->GetRow();
+	
 }
 
 void CTilemap::Tick()
@@ -34,6 +33,16 @@ void CTilemap::FinalTick()
 
 void CTilemap::Render(HDC _hdc)
 {
+}
+
+void CTilemap::SetGrid(CGrid* _Grid)
+{
+	m_Grid = _Grid;
+	m_TileSize = m_Grid->GetTileSize();
+	m_Column = m_Grid->GetColumn();
+	m_Row = m_Grid->GetRow();
+
+	m_vecTile.resize(m_Column * m_Row);
 }
 
 void CTilemap::AddTile(int _Column, int _Row, const wstring& _TileKey)

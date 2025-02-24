@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="CAsset.h" />
     <ClInclude Include="CBase.h" />
     <ClInclude Include="CCamera.h" />
@@ -187,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CAsset.cpp" />
     <ClCompile Include="CBase.cpp" />
     <ClCompile Include="CCamera.cpp" />

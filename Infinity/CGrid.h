@@ -8,7 +8,7 @@ class CGrid :
 {
 private:
     vector<CTilemap*>   m_vecTilemap;
-    UINT                m_TileSize;
+    int                 m_TileSize;
     int                 m_Column;
     int                 m_Row;
 
@@ -16,16 +16,17 @@ private:
     void DrawGrid(HDC _hdc, Vec2 vPos);
 
 public:
-    UINT GetTileSize() { return m_TileSize; }
+    int GetRow() { return m_Row; }
+    int GetColumn() { return m_Column; }
+    int GetTileSize() { return m_TileSize; }
+
+    void SetRow(int _Row) { m_Row = _Row; }
+    void SetColumn(int _Column) { m_Column = _Column; }
     void SetTileSize(UINT _Tilesize) { m_TileSize = _Tilesize; }
 
-    int GetColumn() { return m_Column; }
-    void SetColumn(UINT _Column) { m_Column = _Column; }
-
-    int GetRow() { return m_Row; }
-    void SetRow(UINT _Row) { m_Row = _Row; }
-
     void AddTilemap(CTilemap* _Tilemap) { m_vecTilemap.push_back(_Tilemap); }
+    Vec2Int WorldToCell(Vec2 _WorldPosition);
+    Vec2 CellToWorld(Vec2Int _CellPosition);
 
     virtual void BeginPlay() override;
     virtual void Tick()override;

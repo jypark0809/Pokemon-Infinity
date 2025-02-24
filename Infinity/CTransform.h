@@ -1,5 +1,8 @@
 #pragma once
 #include "CComponent.h"
+
+class CCamera;
+
 class CTransform :
     public CComponent
 {
@@ -18,6 +21,11 @@ public:
 
     Vec2 GetPosition() { return m_Position; }
     void SetPosition(Vec2 _position) { m_Position = _position; }
+    void Translate(Vec2 _Translation)
+    {
+        m_Position.x += _Translation.x;
+        m_Position.y += _Translation.y;
+    }
 
     Vec2 GetScale() { return m_Scale; }
     void SetScale(Vec2 _Scale) { m_Scale = _Scale; }

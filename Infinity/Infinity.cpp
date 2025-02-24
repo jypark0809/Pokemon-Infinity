@@ -156,6 +156,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 pSpriteEditor->Apply();
             }
                 break;
+            case ID_TILE_CREATETILEPALETTE:
+            {
+                // [Sprite Editor] - [Tile] - [Create Tile Palette]
+                CSpriteEditorLevel* pSpriteEditor = dynamic_cast<CSpriteEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
+                assert(pSpriteEditor);
+                pSpriteEditor->CreateTilePalette();
+            }
+            break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;

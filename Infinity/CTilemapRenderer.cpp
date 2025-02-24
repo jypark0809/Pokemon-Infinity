@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "CTilemapRenderer.h"
+#include "LevelManager.h"
+#include "CLevel.h"
 #include "CTransform.h"
+#include "CCamera.h"
 #include "CTilemap.h"
 #include "CGrid.h"
 #include "CSprite.h"
@@ -16,11 +19,16 @@ CTilemapRenderer::~CTilemapRenderer()
 {
 }
 
+void CTilemapRenderer::SetTilemap(CTilemap* _Tilemap)
+{
+	m_Tilemap = _Tilemap;
+	m_TileSize = m_Tilemap->GetTileSize();
+	m_Column = m_Tilemap->GetColumn();
+	m_Row = m_Tilemap->GetRow();
+}
+
 void CTilemapRenderer::BeginPlay()
 {
-	m_TileSize = m_Grid->GetTileSize();
-	m_Column = m_Grid->GetColumn();
-	m_Row = m_Grid->GetRow();
 }
 
 void CTilemapRenderer::Tick()
@@ -41,6 +49,9 @@ void CTilemapRenderer::Render(HDC _hdc)
 		for (int Col = 0; Col < m_Column; ++Col)
 		{
 			int Idx = Row * m_Column + Col;
+			if (m_vecTile[Idx] == nullptr)
+				continue;
+
 			CSprite* pSprite = m_vecTile[Idx]->GetSprite();
 
 			if (nullptr == pSprite)

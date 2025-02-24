@@ -13,11 +13,11 @@ public:
     int GetWidth() { return m_Info.bmWidth; }
     int GetHeight() { return m_Info.bmHeight; }
     void Resize(UINT _Width, UINT _Height);
+    void Render(HDC _hdc, Vec2 _OriginDest);
 
 private:
     virtual int Load(const wstring& _RelativePath) override;
     void Create(UINT _Width, UINT _Height);
-    
 
 public:
     CTexture();

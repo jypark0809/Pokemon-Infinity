@@ -46,6 +46,19 @@ void CGameObject::Render(HDC _hdc)
 	{
 		m_vecComponent[i]->Render(_hdc);
 	}
+
+	for (size_t i = 0; i < m_Children.size(); ++i)
+	{
+		m_Children[i]->Render(_hdc);
+	}
+}
+
+void CGameObject::AddChild(CGameObject* _Child)
+{
+	CTransform* pTransform = this->GetComponent<CTransform>();
+	pTransform->AddChild(_Child->GetComponent<CTransform>());
+
+	m_Children.push_back(_Child);
 }
 
 CComponent* CGameObject::AddComponent(CComponent* _Component)

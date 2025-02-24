@@ -73,6 +73,26 @@ void CTexture::Create(UINT _Width, UINT _Height)
     GetObject(m_hBitMap, sizeof(BITMAP), &m_Info);
 }
 
+void CTexture::Render(HDC _hdc, Vec2 _OriginDest)
+{
+    BLENDFUNCTION blend = {};
+    blend.BlendOp = AC_SRC_OVER;
+    blend.BlendFlags = 0;
+    blend.SourceConstantAlpha = 255; // 추가 알파값
+    blend.AlphaFormat = AC_SRC_ALPHA; // 알파 채널의 알파값을 투명도로 사용
+
+    AlphaBlend(_hdc
+        , _OriginDest.x
+        , _OriginDest.y
+        , m_Info.bmWidth
+        , m_Info.bmHeight
+        , m_DC
+        , 0, 0
+        , m_Info.bmWidth
+        , m_Info.bmHeight
+        , blend);
+}
+
 void CTexture::Resize(UINT _Width, UINT _Height)
 {
     // 기존 백 버퍼 해제

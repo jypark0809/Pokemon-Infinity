@@ -8,7 +8,6 @@ class CEngine
 private:
 	HINSTANCE	m_hInst;						// 프로세스 핸들
 	HWND		m_hMainWnd;						// 메인 윈도우 핸들
-	HWND		m_hSubWnd;						// 서브 윈도우 핸들
 	HDC			m_hdc;							// DeviceContext (DC), 그리기(렌더링) 작업 관리자
 	Vec2		m_Resolution;					// 윈도우 해상도
 	CTexture*	m_BackBuffer;					// 백버퍼 텍스쳐
@@ -28,9 +27,6 @@ public:
 	
 	HINSTANCE GetHInst() { return m_hInst; }
 	void SetHInst(HINSTANCE _hInst) { m_hInst = _hInst; }
-
-	HWND GetSubWnd() { return m_hSubWnd; }
-	void SetSubWnd(HWND _hWnd) { m_hSubWnd = _hWnd; }
 
 	HWND GetMainWnd() { return m_hMainWnd; }
 	HDC GetMainDC() { return m_hdc; }

@@ -27,7 +27,7 @@ public:
 		}
 	}
 	CGameObject* GetParent() { return m_Parent; }
-	void AddChild(CGameObject* _Child)	{ m_Children.push_back(_Child);	}
+	void AddChild(CGameObject* _Child);
 
 	void SetLayerType(LayerType _Layer) { m_Layer = _Layer; }
 	LayerType GetLayerType() { return m_Layer; }

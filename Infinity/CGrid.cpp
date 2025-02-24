@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "CGrid.h"
-
+#include "CTransform.h"
+#include "LevelManager.h"
+#include "CLevel.h"
+#include "CCamera.h"
 
 CGrid::CGrid()
 	: CComponent(ComponentType::GRID)
@@ -9,6 +12,29 @@ CGrid::CGrid()
 
 CGrid::~CGrid()
 {
+}
+
+Vec2Int CGrid::WorldToCell(Vec2 _WorldPosition)
+{
+	CCamera* pCamera = LevelManager::GetInstance()->GetCurrentLevel()->GetCamera();
+	Vec2 vWorldPosition = pCamera->GetWorldPos(_WorldPosition);
+	Vec2 vDiff = vWorldPosition - GetOwner()->GetComponent<CTransform>()->GetPosition();
+
+	int column = (int)vDiff.x / m_TileSize;
+	int row = (int)vDiff.y / m_TileSize;
+
+	// 존재하지 않는 행렬위치를 지정한 경우
+	if (m_Row <= row || m_Column <= column)
+	{
+		return Vec2Int(-1, -1);
+	}
+
+	return Vec2Int(column, row);
+}
+
+Vec2 CGrid::CellToWorld(Vec2Int _CellPosition)
+{
+	return Vec2();
 }
 
 void CGrid::BeginPlay()
@@ -25,9 +51,8 @@ void CGrid::FinalTick()
 
 void CGrid::Render(HDC _hdc)
 {
-	// TODO : 카메라
-	// Vec2 vPos = GetOwner()->GetViewPos();
-	DrawGrid(_hdc, Vec2(0.f, 0.f));
+	Vec2 vPos = GetOwner()->GetComponent<CTransform>()->GetViewPos();
+	DrawGrid(_hdc, vPos);
 }
 
 void CGrid::DrawGrid(HDC _hdc, Vec2 vPos)

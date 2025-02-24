@@ -134,7 +134,7 @@ void CSpriteEditorLevel::OnExit()
 void CSpriteEditorLevel::LoadFile()
 {
     Revert();
-    wstring InitialDir = CONTENT_PATH.wstring() + L"\\Texture\\Characters";
+    wstring InitialDir = CONTENT_PATH.wstring() + L"\\Texture";
 
     // 파일 경로 문자열
     wchar_t szFilePath[255] = {};
@@ -150,8 +150,11 @@ void CSpriteEditorLevel::LoadFile()
     if (GetOpenFileName(&Desc))
     {
         fs::path filePath(szFilePath);
+        wstring fullPath = filePath.wstring();
+        wstring relativePath = fullPath.substr(fullPath.find(L"Texture\\"));
         wstring fileName = filePath.stem().wstring(); // .png 제외
-        CTexture* pTex = AssetManager::GetInstance()->LoadTexture(fileName, szFilePath);
+
+        CTexture* pTex = AssetManager::GetInstance()->LoadTexture(fileName, relativePath);
         pTex->SetName(fileName);
         SetTexture(pTex);
     }
@@ -199,12 +202,25 @@ void CSpriteEditorLevel::GridByCellSize(Vec2 _Size, Vec2 _LeftTop, Vec2 _Padding
     }
 }
 
+
+#include "CPrefab.h"
 void CSpriteEditorLevel::CreateTilePalette()
 {
-    wstring tilemapName = m_Texture->GetName();
-    wstring tileName = tilemapName + L"_%d";
-    CTilemap* pTilemap = new CTilemap;
-    
+    CGameObject* pMap = new CGameObject;
+    pMap->SetName(L"Map_01");
+    CGrid* pGird = pMap->AddComponent<CGrid>();
+    pGird->SetTileSize(32);
+    pGird->SetColumn(m_Columns);
+    pGird->SetRow(m_Rows);
+
+    CGameObject* pLayer = new CGameObject;
+    pLayer->SetName(L"Layer");
+    CTilemap* pTilemap = pLayer->AddComponent<CTilemap>();
+    pMap->AddChild(pLayer);
+
+    // Tile 저장
+    wstring textureName = m_Texture->GetName();
+    wstring tileName = textureName + L"_%d";
     for (size_t i = 0; i < m_Sprites.size(); ++i)
     {
         // Tile
@@ -216,13 +232,22 @@ void CSpriteEditorLevel::CreateTilePalette()
         Path = Path + szKey + L".tile";
         pTile->SetRelativePath(Path);
         pTile->Save(Path);
-        
+
         int Col = i / m_Columns;
         int Row = i % m_Columns;
         pTilemap->AddTile(Col, Row, pTile->GetKey());
     }
 
-    // TODO : Tilemap 저장
+    // Prefab 생성
+    CPrefab* pPrefab = new CPrefab;
+    pPrefab->SetObject(pMap);
+    wstring relativePath = L"Prefab\\" + pMap->GetName();
+
+
+    pPrefab->SetName(pMap->GetName());
+    pPrefab->SetKey(pMap->GetName());
+    pPrefab->SetRelativePath(relativePath);
+    pPrefab->Save(relativePath);
 
     // delete pTilemap?
 }

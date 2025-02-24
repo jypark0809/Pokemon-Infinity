@@ -1,9 +1,12 @@
 #include "pch.h"
 #include "CLevel.h"
 #include "CGameObject.h"
+#include "CCamera.h"
 
 CLevel::CLevel()
 {
+	CGameObject* pCamera = new CGameObject;
+	m_Camera = pCamera->AddComponent<CCamera>();
 }
 
 CLevel::~CLevel()

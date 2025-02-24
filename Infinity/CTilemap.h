@@ -12,13 +12,17 @@ private:
     CGrid*              m_Grid;
     CTilemapRenderer*   m_tmRenderer;
     vector<CTile*>      m_vecTile;
-    UINT                m_TileSize;
+    int                 m_TileSize;
     int                 m_Column;
     int                 m_Row;
 
 public:
-    void SetGrid(CGrid* _Grid) { m_Grid = _Grid; }
+    void SetGrid(CGrid* _Grid);
     void SetTilemapRenderer(CTilemapRenderer* _tmRenderer) { m_tmRenderer = _tmRenderer; }
+
+    int GetRow() { return m_Row; }
+    int GetColumn() { return m_Column; }
+    int GetTileSize() { return m_TileSize; }
 
     void AddTile(int _Column, int _Row, const wstring& _SpriteKey);
     vector<CTile*>& GetTileVector() { return m_vecTile; }

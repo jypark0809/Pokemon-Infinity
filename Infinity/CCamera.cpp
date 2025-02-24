@@ -6,6 +6,7 @@
 CCamera::CCamera()
 	: CComponent(ComponentType::CAMERA)
 	, m_Target(nullptr)
+	, m_Speed(100)
 {
 }
 
@@ -21,10 +22,23 @@ void CCamera::BeginPlay()
 
 void CCamera::Tick()
 {
+	
 }
 
+#include "KeyManager.h"
+#include "TimeManager.h"
 void CCamera::FinalTick()
 {
+	// TEMP
+	if (KeyManager::GetInstance()->GetButton(Key::LEFT))
+		m_Target->GetComponent<CTransform>()->Translate(Vec2(-m_Speed * DT, 0));
+	if (KeyManager::GetInstance()->GetButton(Key::UP))
+		m_Target->GetComponent<CTransform>()->Translate(Vec2(0, -m_Speed * DT));
+	if (KeyManager::GetInstance()->GetButton(Key::DOWN))
+		m_Target->GetComponent<CTransform>()->Translate(Vec2(0, m_Speed * DT));
+	if (KeyManager::GetInstance()->GetButton(Key::RIGHT))
+		m_Target->GetComponent<CTransform>()->Translate(Vec2(m_Speed * DT, 0));
+
 	if (m_Target)
 		m_LookAt = m_Target->GetComponent<CTransform>()->GetPosition();
 	else

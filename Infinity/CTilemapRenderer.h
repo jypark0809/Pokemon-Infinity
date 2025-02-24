@@ -15,7 +15,7 @@ private:
     int             m_Row;
 
 public:
-    void SetTilemap(CTilemap* _Tilemap) { m_Tilemap = _Tilemap; }
+    void SetTilemap(CTilemap* _Tilemap);
     CTilemap* GetTilemap() { return m_Tilemap; }
 
     void BeginPlay() override;

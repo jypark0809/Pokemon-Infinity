@@ -114,6 +114,9 @@
     <Filter Include="소스 파일\05. Asset\5. Prefab">
       <UniqueIdentifier>{22087195-4be0-44ec-97ef-e94567bc5183}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Manager\06. Camera">
+      <UniqueIdentifier>{f9386a42-3546-44f5-ac95-d1cd530efff5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -241,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="CPrefab.h">
       <Filter>소스 파일\05. Asset\5. Prefab</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>소스 파일\01. Manager\06. Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -370,6 +376,9 @@
     </ClCompile>
     <ClCompile Include="CPrefab.cpp">
       <Filter>소스 파일\05. Asset\5. Prefab</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>소스 파일\01. Manager\06. Camera</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

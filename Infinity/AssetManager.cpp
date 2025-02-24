@@ -16,6 +16,8 @@ AssetManager::~AssetManager()
 	Delete_Map(m_Textures);
 	Delete_Map(m_Sprites);
 	Delete_Map(m_Flipbooks);
+	Delete_Map(m_Tiles);
+	Delete_Map(m_Prefabs);
 }
 
 void AssetManager::Init()
