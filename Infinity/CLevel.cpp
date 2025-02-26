@@ -7,6 +7,7 @@ CLevel::CLevel()
 {
 	CGameObject* pCamera = new CGameObject;
 	m_Camera = pCamera->AddComponent<CCamera>();
+	AddObject(GetCamera()->GetOwner(), LayerType::CAMERA);
 }
 
 CLevel::~CLevel()

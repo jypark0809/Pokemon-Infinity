@@ -13,8 +13,6 @@ HWND        g_hWnd = nullptr;
 ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-LRESULT CALLBACK    GridByCellSizeProc(HWND, UINT, WPARAM, LPARAM);
-LRESULT CALLBACK    NineSlicingProc(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -167,9 +165,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case ID_FILE_SAVE:
             {
                 // [Tilemap Editor] - [File] - [Save]
-                CTilemapEditorLevel* pTilemapEditor = dynamic_cast<CTilemapEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
-                assert(pTilemapEditor);
-                pTilemapEditor->SaveMap();
+                CTilemapEditorLevel* pTimemapEditor = dynamic_cast<CTilemapEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
+                assert(pTimemapEditor);
+                pTimemapEditor->SaveMap();
+            }
+                break;
+            case ID_FILE_LOAD:
+            {
+                // [Tilemap Editor] - [File] - [LOAD]
+                CTilemapEditorLevel* pTimemapEditor = dynamic_cast<CTilemapEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
+                assert(pTimemapEditor);
+                pTimemapEditor->LoadMap();
+            }
+                break;
+            case ID_GRID_CREATEGRID:
+            {
+                // [Tilemap Editor] - [Grid] - [Create Grid]
+                DialogBox(g_hInst, MAKEINTRESOURCE(IDD_DIALOG_CREATEGRID), hWnd, CreateGirdProc);
+                break;
             }
             break;
             case IDM_EXIT:

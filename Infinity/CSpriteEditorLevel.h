@@ -51,3 +51,5 @@ public:
     ~CSpriteEditorLevel();
 };
 
+LRESULT CALLBACK    GridByCellSizeProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    NineSlicingProc(HWND, UINT, WPARAM, LPARAM);

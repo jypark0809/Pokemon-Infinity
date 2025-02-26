@@ -18,7 +18,7 @@ class CTilemapEditorLevel :
 private:
     HMENU               m_hMenu;
     CGrid*              m_Grid;
-    CTilemap*           m_Tilemap;
+    CTilemap*           m_CurrentTilemap;
     PaintingTool        m_PaintingTool;
 
     HMENU               m_hSubMenu;
@@ -26,6 +26,9 @@ private:
     HDC                 m_hSubDC;
     CTexture*           m_SubBackBuffer;
     CTexture*           m_TileTexture;   // Tileset
+
+    HWND                m_hComboBox;
+    HWND                m_hEditControl;
 
 public:
     virtual void BeginPlay() override;
@@ -36,11 +39,14 @@ public:
     virtual void OnEnter() override;
     virtual void OnExit() override;
 
-    void SetTilemap(CTilemap* _Tilemap) { m_Tilemap = _Tilemap; }
+    void SetCurrentTilemap(CTilemap* _Tilemap) { m_CurrentTilemap = _Tilemap; }
     void SetPaintingTool(PaintingTool _Tool) { m_PaintingTool = _Tool; }
-    CTilemap* GetTilemap() { return m_Tilemap; }
+    CTilemap* GetCurrentTilemap() { return m_CurrentTilemap; }
+    CGrid* GetGrid() { return m_Grid; }
 
-    void AddTilemap(const wstring& _TilemapName);
+    CGrid* CreateGrid(int _Tilesize, int _Columns, int _Rows, const wstring& _ObjectName);
+    CTilemap* AddTilemap(const wstring& _ObjectName);
+    void UpdateTilePaletteHelper();
 
     int SaveMap();
     int LoadMap();
@@ -59,5 +65,6 @@ public:
     ~CTilemapEditorLevel();
 };
 
+LRESULT CALLBACK    CreateGirdProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    TilePaletteProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    TilePaletteHelperProc(HWND, UINT, WPARAM, LPARAM);

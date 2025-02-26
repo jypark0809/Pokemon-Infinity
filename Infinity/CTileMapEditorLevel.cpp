@@ -13,9 +13,12 @@
 #include "CSprite.h"
 #include "CTile.h"
 
-Vec2 vResolutionHD = Vec2(256, 960);
+#define CameraSpeed 200
+
+Vec2 tilePaletteResolution = Vec2(256, 960);
 Vec2Int vSelectedIndex;
-int m_Speed = 200;
+HWND hComboBox;
+HWND hEditControl;
 
 CTilemapEditorLevel::CTilemapEditorLevel()
 	: m_SubWnd(nullptr)
@@ -23,32 +26,14 @@ CTilemapEditorLevel::CTilemapEditorLevel()
 	, m_SubBackBuffer(nullptr)
 	, m_TileTexture(nullptr)
 	, m_PaintingTool(PaintingTool::PaintBrush)
+	, m_Grid(nullptr)
+	, m_CurrentTilemap(nullptr)
 {
-	{
-		m_hMenu = LoadMenu(nullptr, (LPCWSTR)IDR_MENU_TILEMAPEDITOR);
-		assert(m_hMenu);
+	m_hMenu = LoadMenu(nullptr, (LPCWSTR)IDR_MENU_TILEMAPEDITOR);
+	assert(m_hMenu);
 
-		m_hSubMenu = LoadMenu(nullptr, (LPCWSTR)IDR_MENU_TILEPALETTE);
-		assert(m_hSubMenu);
-
-		CGameObject* pMap = new CGameObject;
-		pMap->SetName(L"Map");
-		m_Grid = pMap->AddComponent<CGrid>();
-		m_Grid->SetTileSize(32);
-		m_Grid->SetColumn(50);
-		m_Grid->SetRow(50);
-		AddObject(pMap, LayerType::MAP);
-
-		// CGameObject* pGround = new CGameObject;
-		// pGround->SetName(L"Ground");
-		// m_Tilemap = pGround->AddComponent<CTilemap>();
-		// m_Tilemap->SetGrid(m_Grid);
-		// CTilemapRenderer* tmRenderer = pGround->AddComponent<CTilemapRenderer>();
-		// tmRenderer->SetTilemap(m_Tilemap);
-		// pMap->AddChild(pGround);
-
-		AddObject(GetCamera()->GetOwner(), LayerType::CAMERA);
-	}
+	m_hSubMenu = LoadMenu(nullptr, (LPCWSTR)IDR_MENU_TILEPALETTE);
+	assert(m_hSubMenu);
 }
 
 CTilemapEditorLevel::~CTilemapEditorLevel()
@@ -70,18 +55,18 @@ void CTilemapEditorLevel::Tick()
 
 	// TEMP
 	if (KeyManager::GetInstance()->GetButton(Key::LEFT))
-		GetCamera()->GetOwner()->GetComponent<CTransform>()->Translate(Vec2(-m_Speed * DT, 0));
+		GetCamera()->GetOwner()->GetComponent<CTransform>()->Translate(Vec2(-CameraSpeed * DT, 0));
 	if (KeyManager::GetInstance()->GetButton(Key::UP))
-		GetCamera()->GetOwner()->GetComponent<CTransform>()->Translate(Vec2(0, -m_Speed * DT));
+		GetCamera()->GetOwner()->GetComponent<CTransform>()->Translate(Vec2(0, -CameraSpeed * DT));
 	if (KeyManager::GetInstance()->GetButton(Key::DOWN))
-		GetCamera()->GetOwner()->GetComponent<CTransform>()->Translate(Vec2(0, m_Speed * DT));
+		GetCamera()->GetOwner()->GetComponent<CTransform>()->Translate(Vec2(0, CameraSpeed * DT));
 	if (KeyManager::GetInstance()->GetButton(Key::RIGHT))
-		GetCamera()->GetOwner()->GetComponent<CTransform>()->Translate(Vec2(m_Speed * DT, 0));
+		GetCamera()->GetOwner()->GetComponent<CTransform>()->Translate(Vec2(CameraSpeed * DT, 0));
 
-	if (!m_Tilemap)
+	if (!m_CurrentTilemap)
 		return;
 
-	if (KeyManager::GetInstance()->GetButtonDown(Key::LBUTTON))
+	if (KeyManager::GetInstance()->GetButton(Key::LBUTTON))
 	{
 		Vec2Int vClickedPos = m_Grid->WorldToCell(KeyManager::GetInstance()->GetMousePos());
 
@@ -96,14 +81,11 @@ void CTilemapEditorLevel::Tick()
 			wstring Path = L"Tile\\";
 			Path = Path + szKey + L".tile";
 			CTile* pTile = AssetManager::GetInstance()->LoadTile(szKey, Path);
-
-			// TODO
-
-			m_Tilemap->AddTile(vClickedPos.x, vClickedPos.y, szKey);
+			m_CurrentTilemap->AddTile(vClickedPos.x, vClickedPos.y, szKey);
 		}
 		else if (m_PaintingTool == PaintingTool::Eraser)
 		{
-			m_Tilemap->DeleteTile(vClickedPos.x, vClickedPos.y);
+			m_CurrentTilemap->DeleteTile(vClickedPos.x, vClickedPos.y);
 		}
 	}
 }
@@ -117,7 +99,7 @@ void CTilemapEditorLevel::Render(HDC _hdc)
 {
 	{
 		SELECT_BRUSH(m_SubBackBuffer->GetDC(), BRUSH_TYPE::DARKGRAY);
-		Rectangle(m_SubBackBuffer->GetDC(), -1, -1, vResolutionHD.x + 1, vResolutionHD.y + 1);
+		Rectangle(m_SubBackBuffer->GetDC(), -1, -1, tilePaletteResolution.x + 1, tilePaletteResolution.y + 1);
 	}
 
 	if (m_TileTexture)
@@ -136,7 +118,7 @@ void CTilemapEditorLevel::Render(HDC _hdc)
 	}
 
 	// BackBuffer 에 그려진 최종 그림을 MainBuffer 로 복사
-	BitBlt(m_hSubDC, 0, 0, vResolutionHD.x, vResolutionHD.y, m_SubBackBuffer->GetDC(), 0, 0, SRCCOPY);
+	BitBlt(m_hSubDC, 0, 0, tilePaletteResolution.x, tilePaletteResolution.y, m_SubBackBuffer->GetDC(), 0, 0, SRCCOPY);
 
 	CLevel::Render(_hdc);
 }
@@ -146,7 +128,7 @@ void CTilemapEditorLevel::OnEnter()
 	CEngine::GetInstance()->ChangeWindowSize(1024, 960);
 	
 	CreateSubWindow();
-	ChangeSubWindowSize(vResolutionHD.x, vResolutionHD.y);
+	ChangeSubWindowSize(tilePaletteResolution.x, tilePaletteResolution.y);
 
 	SetMenu(CEngine::GetInstance()->GetMainWnd(), m_hMenu);
 	SetMenu(m_SubWnd, m_hSubMenu);
@@ -160,10 +142,28 @@ void CTilemapEditorLevel::OnExit()
 	CLevel::OnExit();
 }
 
-void CTilemapEditorLevel::AddTilemap(const wstring& _TilemapName)
+CGrid* CTilemapEditorLevel::CreateGrid(int _Tilesize, int _Columns, int _Rows, const wstring& _ObjectName)
+{
+	SAFE_DELETE(m_Grid);
+
+	CGameObject* pMap = new CGameObject;
+	pMap->SetName(_ObjectName);
+
+	CGrid* pGrid = pMap->AddComponent<CGrid>();
+	pGrid->SetTileSize(_Tilesize);
+	pGrid->SetColumn(_Columns);
+	pGrid->SetRow(_Rows);
+	AddObject(pMap, LayerType::MAP);
+
+	m_Grid = pGrid;
+
+	return pGrid;
+}
+
+CTilemap* CTilemapEditorLevel::AddTilemap(const wstring& _ObjectName)
 {
 	CGameObject* tilemapObj = new CGameObject;
-	tilemapObj->SetName(_TilemapName);
+	tilemapObj->SetName(_ObjectName);
 
 	CTilemap* tilemap = tilemapObj->AddComponent<CTilemap>();
 	tilemap->SetGrid(m_Grid);
@@ -174,7 +174,7 @@ void CTilemapEditorLevel::AddTilemap(const wstring& _TilemapName)
 	CGameObject* owner = m_Grid->GetOwner();
 	owner->AddChild(tilemapObj);
 
-	m_Tilemap = tilemap;
+	return tilemap;
 }
 
 void CTilemapEditorLevel::LoadFile()
@@ -231,16 +231,22 @@ void CTilemapEditorLevel::LoadFile()
 				, Vec2(0.f, 0.f));
 			
 			// TODO : Sprite 저장
+			wstring spritePath = L"Sprite\\";
+			spritePath = spritePath + szKey + L".sprite";
+			pSprite->SetName(szKey);
+			pSprite->SetKey(szKey);
+			pSprite->SetRelativePath(spritePath);
+			pSprite->Save(spritePath);
 
 			CTile* pTile = AssetManager::GetInstance()->CreateTile(szKey, pSprite);
 
 			// 상대 경로 설정
-			wstring Path = L"Tile\\";
-			Path = Path + szKey + L".tile";
+			wstring tilePath = L"Tile\\";
+			tilePath = tilePath + szKey + L".tile";
 			pTile->SetName(szKey);
 			pTile->SetKey(szKey);
-			pTile->SetRelativePath(Path);
-			pTile->Save(Path);
+			pTile->SetRelativePath(tilePath);
+			pTile->Save(tilePath);
 		}
 	}
 
@@ -308,36 +314,45 @@ int CTilemapEditorLevel::SaveMap()
 		{
 			CTilemap* pTilemap = m_Grid->GetTilemapVector()[i];
 			wstring tilemapName = pTilemap->GetOwner()->GetName();
+			int tileCount = pTilemap->GetTileVector().size();
+			SaveWString(pFile, tilemapName);
+			fwrite(&tileCount, sizeof(int), 1, pFile);
 
-			// tilemapName fwrite();
-
-			for (size_t j = 0; j < pTilemap->GetTileVector().size(); ++j)
+			for (size_t j = 0; j < tileCount; ++j)
 			{
 				CTile* pTile = pTilemap->GetTileVector()[j];
-				SaveAssetInfo(pFile, pTile);
+				if (pTile)
+				{
+					int x = j % columns;
+					int y = j / columns;
+
+					SaveAssetInfo(pFile, pTile);
+					fwrite(&x, sizeof(int), 1, pFile); // x 좌표 저장
+					fwrite(&y, sizeof(int), 1, pFile); // y 좌표 저장
+				}
+				else
+				{
+					SaveAssetInfo(pFile, pTile);
+				}
 			}
 		}
-
 		fclose(pFile);
 	}
-
 	return S_OK;
 }
 
 int CTilemapEditorLevel::LoadMap()
 {
-	// REVERT
-
 	// 파일 경로 문자열
 	wchar_t szFilePath[255] = {};
-	wstring InitialDir = CONTENT_PATH.wstring() + L"\\Texture";
+	wstring InitialDir = CONTENT_PATH.wstring() + L"\\Map";
 
 	OPENFILENAME Desc = {};
 	Desc.lStructSize = sizeof(OPENFILENAME);
 	Desc.hwndOwner = nullptr;
 	Desc.lpstrFile = szFilePath; // 최종적으로 고른 경로를 받아낼 목적지
 	Desc.nMaxFile = 255;
-	Desc.lpstrFilter = L"그림 파일\0*.png;*.bmp\0모든 파일(*.*)\0*.*";
+	Desc.lpstrFilter = L"Map Files\0*.map\0All Files (*.*)\0*.*";
 	Desc.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 	Desc.lpstrInitialDir = InitialDir.c_str();
 
@@ -351,32 +366,44 @@ int CTilemapEditorLevel::LoadMap()
 		FILE* pFile = nullptr;
 		_wfopen_s(&pFile, fullPath.c_str(), L"rb");
 
-		int tileSize;
-		int columns;
-		int rows;
-		int tilemapCount;
+		int tileSize, columns, rows, tilemapCount;
 
 		fread(&tileSize, sizeof(int), 1, pFile);
 		fread(&columns, sizeof(int), 1, pFile);
 		fread(&rows, sizeof(int), 1, pFile);
 		fread(&tilemapCount, sizeof(int), 1, pFile);
 
+		m_Grid = CreateGrid(tileSize, columns, rows, L"Map");
 		m_Grid->SetTileSize(tileSize);
 		m_Grid->SetColumn(columns);
 		m_Grid->SetRow(rows);
 
 		for (size_t i = 0; i < tilemapCount; ++i)
 		{
-			CTilemap* pTilemap = m_Grid->GetTilemapVector()[i];
-			for (size_t j = 0; j < pTilemap->GetTileVector().size(); ++j)
+			wstring tilemapName;
+			int tileCount;
+			LoadWString(pFile, tilemapName);
+			fread(&tileCount, sizeof(int), 1, pFile);
+			CTilemap* pTilemap = AddTilemap(tilemapName);
+
+			for (size_t j = 0; j < tileCount; ++j)
 			{
-				CTile* pTile = pTilemap->GetTileVector()[j];
-				SaveAssetInfo(pFile, pTile);
+				CTile* pTile = dynamic_cast<CTile*>(LoadAssetInfo(pFile, AssetType::TILE));
+				if (pTile)
+				{
+					int x, y;
+					fread(&x, sizeof(int), 1, pFile);
+					fread(&y, sizeof(int), 1, pFile);
+
+					pTilemap->AddTile(x, y, pTile->GetKey());
+				}
 			}
 		}
 
 		fclose(pFile);
 	}
+
+	UpdateTilePaletteHelper();
 
 	return S_OK;
 }
@@ -389,9 +416,9 @@ void CTilemapEditorLevel::LoadTile()
 	if (fs::exists(filePath) && fs::is_directory(filePath))
 	{
 		int fileCount = 0;
-		for (const auto& entry : fs::directory_iterator(filePath))
+		for (const auto& entry : fs::recursive_directory_iterator(filePath))
 		{
-			if (fs::is_regular_file(entry))
+			if (fs::is_regular_file(entry) && entry.path().extension() == L".sprite")
 			{
 				// TODO
 				fileCount++;
@@ -434,7 +461,7 @@ void CTilemapEditorLevel::CreateSubWindow()
 		, 0);
 
 	m_hSubDC = GetDC(m_SubWnd);
-	m_SubBackBuffer = AssetManager::GetInstance()->CreateTexture(L"SubBackBuffer", vResolutionHD.x, vResolutionHD.y);
+	m_SubBackBuffer = AssetManager::GetInstance()->CreateTexture(L"SubBackBuffer", tilePaletteResolution.x, tilePaletteResolution.y);
 }
 
 void CTilemapEditorLevel::DestroySubWindow()
@@ -445,6 +472,21 @@ void CTilemapEditorLevel::DestroySubWindow()
 	}
 }
 
+void CTilemapEditorLevel::UpdateTilePaletteHelper()
+{
+	if (m_Grid)
+	{
+		vector<CTilemap*> tilemapVector = m_Grid->GetTilemapVector();
+		for (size_t i = 0; i < tilemapVector.size(); ++i)
+		{
+			wstring tilemapName = tilemapVector[i]->GetOwner()->GetName();
+			SendMessage(hComboBox, CB_ADDSTRING, i, (LPARAM)tilemapName.c_str()); // ComboBox에 항목 추가
+		}
+	}
+
+	// 첫 번째 항목을 선택
+	SendMessage(hComboBox, CB_SETCURSEL, 0, 0);
+}
 
 #include "LevelManager.h"
 LRESULT CALLBACK TilePaletteProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -504,8 +546,7 @@ LRESULT CALLBACK TilePaletteProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 	return 0;
 }
 
-HWND hComboBox;
-HWND hEditControl;
+
 INT_PTR CALLBACK TilePaletteHelperProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
@@ -516,11 +557,12 @@ INT_PTR CALLBACK TilePaletteHelperProc(HWND hDlg, UINT message, WPARAM wParam, L
 		hComboBox = GetDlgItem(hDlg, IDC_TILEPALETTE_COMBO);
 		hEditControl = GetDlgItem(hDlg, IDC_TILEPALETTE_EDIT_ADDTILEMAP);
 		
-		// ComboBox에 항목 추가
-		// SendMessage(hComboBox, CB_ADDSTRING, 0, (LPARAM)L"Ground");
+		CTilemapEditorLevel* pLevel = dynamic_cast<CTilemapEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
+		assert(pLevel);
+		pLevel->UpdateTilePaletteHelper();
 
 		// 첫 번째 항목을 선택
-		// SendMessage(hComboBox, CB_SETCURSEL, 0, 0);
+		SendMessage(hComboBox, CB_SETCURSEL, 0, 0);
 		return (INT_PTR)TRUE;
 	}
 	case WM_COMMAND:
@@ -537,13 +579,13 @@ INT_PTR CALLBACK TilePaletteHelperProc(HWND hDlg, UINT message, WPARAM wParam, L
 			wchar_t buffer[256];
 			SendMessage(hComboBox, CB_GETLBTEXT, index, (LPARAM)buffer);
 
-			CGameObject* RootObj = pLevel->GetTilemap()->GetOwner()->GetParent();
+			CGameObject* RootObj = pLevel->GetCurrentTilemap()->GetOwner()->GetParent();
 			for (size_t i = 0; i < RootObj->GetChildren().size(); ++i)
 			{
 				CTilemap* pTilemap = RootObj->GetChildren()[i]->GetComponent<CTilemap>();
 				if (pTilemap && pTilemap->GetOwner()->GetName() == buffer)
 				{
-					pLevel->SetTilemap(pTilemap);
+					pLevel->SetCurrentTilemap(pTilemap);
 					break;
 				}
 			}
@@ -563,12 +605,13 @@ INT_PTR CALLBACK TilePaletteHelperProc(HWND hDlg, UINT message, WPARAM wParam, L
 
 			CTilemapEditorLevel* pLevel = dynamic_cast<CTilemapEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
 			assert(pLevel);
-			pLevel->AddTilemap(editText);
+			CTilemap* tilemap = pLevel->AddTilemap(editText);
+			pLevel->SetCurrentTilemap(tilemap);
 
 			// 방금 추가한 항목 선택
 			SendMessage(hComboBox, CB_SETCURSEL, SendMessage(hComboBox, CB_GETCOUNT, 0, 0) - 1, 0); 
 
-			// // Edit Control을 빈 문자열로 설정
+			// Edit Control을 빈 문자열로 설정
 			SetWindowText(hEditControl, L"");
 		}
 		else if (LOWORD(wParam) == IDC_TILEPALETTE_BUTTON_PAINT)
@@ -582,6 +625,48 @@ INT_PTR CALLBACK TilePaletteHelperProc(HWND hDlg, UINT message, WPARAM wParam, L
 			CTilemapEditorLevel* pLevel = dynamic_cast<CTilemapEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
 			assert(pLevel);
 			pLevel->SetPaintingTool(PaintingTool::Eraser);
+		}
+		else if (LOWORD(wParam) == IDCANCEL)
+		{
+			// KeyManager::GetInstance()->PreventEvent(1);
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		break;
+	}
+	return (INT_PTR)FALSE;
+}
+
+INT_PTR CALLBACK CreateGirdProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		return (INT_PTR)TRUE;
+	case WM_COMMAND:
+		if (LOWORD(wParam) == IDOK)
+		{
+			HWND hEditControl1 = GetDlgItem(hDlg, IDC_CREATEGRID_EDIT_TILESIZE);
+			HWND hEditControl2 = GetDlgItem(hDlg, IDC_CREATEGRID_EDIT_ROW);
+			HWND hEditControl3 = GetDlgItem(hDlg, IDC_CREATEGRID_EDIT_COLUMN);
+
+			// Edit Control에서 텍스트 가져오기
+			wchar_t editText1[256], editText2[256], editText3[256];
+			GetWindowText(hEditControl1, editText1, ARRAYSIZE(editText1));
+			GetWindowText(hEditControl2, editText2, ARRAYSIZE(editText2));
+			GetWindowText(hEditControl3, editText3, ARRAYSIZE(editText3));
+
+			// 텍스트를 int로 변환
+			int tileSize = _wtoi(editText1);
+			int Rows = _wtoi(editText2);
+			int Columns = _wtoi(editText3);
+
+			CTilemapEditorLevel* pLevel = dynamic_cast<CTilemapEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
+			assert(pLevel);
+			pLevel->CreateGrid(tileSize, Columns, Rows, L"Map");
+
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
 		}
 		else if (LOWORD(wParam) == IDCANCEL)
 		{
