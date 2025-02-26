@@ -134,10 +134,11 @@ void CSpriteEditorLevel::OnExit()
 void CSpriteEditorLevel::LoadFile()
 {
     Revert();
-    wstring InitialDir = CONTENT_PATH.wstring() + L"\\Texture";
 
     // 파일 경로 문자열
     wchar_t szFilePath[255] = {};
+    wstring InitialDir = CONTENT_PATH.wstring() + L"\\Texture";
+    
     OPENFILENAME Desc = {};
     Desc.lStructSize = sizeof(OPENFILENAME);
     Desc.hwndOwner = nullptr;

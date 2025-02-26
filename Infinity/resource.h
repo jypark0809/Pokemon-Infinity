@@ -2,7 +2,6 @@
 // Microsoft Visual C++에서 생성한 포함 파일입니다.
 // Infinity.rc에서 사용되고 있습니다.
 //
-#define IDC_MYICON                      2
 #define IDD_INFINITY_DIALOG             102
 #define IDS_APP_TITLE                   103
 #define IDD_ABOUTBOX                    103
@@ -17,6 +16,9 @@
 #define IDR_Menu_SpriteEditor           136
 #define IDD_DIALOG_SpriteInfo           137
 #define IDD_DIALOG_FlipbookEditor       138
+#define IDR_MENU_TILEPALETTE            139
+#define IDD_DIALOG_TILEPALETTE_HELPER   140
+#define IDR_MENU_TILEMAPEDITOR          142
 #define IDC_Text_PixelSize              1000
 #define IDC_Text_LeftTop                1001
 #define IDC_Text_Padding                1002
@@ -85,17 +87,24 @@
 #define IDC_FLIPBOOKEDITOR_BUTTON_NEXT  1065
 #define IDC_FLIPBOOKEDITOR_BUTTON_APPLY 1066
 #define IDC_FLIPBOOKEDITOR_BUTTON_PREV  1067
-#define IDC_LIST1                       1067
 #define IDC_FLIPBOOKEDITOR_BUTTON_SAVE  1068
 #define IDC_FLIPBOOKEDITOR_BUTTON_PLAY  1069
-#define IDC_FLIPBOOKEDITOR_BUTTON_DELETE2 1070
 #define IDC_FLIPBOOKEDITOR_BUTTON_STOP  1070
+#define IDC_TILEPALETTE_COMBO           1071
+#define IDC_TILEPALETTE_BUTTON_PAINT    1072
+#define IDC_TILEPALETTE_BUTTON_ERASE    1073
+#define IDC_TILEPALETTE_EDIT_ADDTILEMAP 1074
+#define IDC_BUTTON_ADDTILEMAP           1075
 #define ID_FILE_OPENFILE                32783
 #define ID_SLICE_GRIDBYCELLSIZE         32784
 #define ID_APPLY_REVERT                 32786
 #define ID_APPLY_APPLY                  32787
 #define ID_SLICE_9Slicing               32788
 #define ID_TILE_CREATETILEPALETTE       32789
+#define ID_FILE_SAVE                    32792
+#define ID_FILE_LOAD                    32793
+#define ID_HELPER_TILEPALETTEHELPER     32794
+#define ID_TILEPALETTE_OPENFILE         32795
 #define IDC_STATIC                      -1
 
 // Next default values for new objects
@@ -103,9 +112,9 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        139
-#define _APS_NEXT_COMMAND_VALUE         32790
-#define _APS_NEXT_CONTROL_VALUE         1068
+#define _APS_NEXT_RESOURCE_VALUE        143
+#define _APS_NEXT_COMMAND_VALUE         32797
+#define _APS_NEXT_CONTROL_VALUE         1076
 #define _APS_NEXT_SYMED_VALUE           110
 #endif
 #endif

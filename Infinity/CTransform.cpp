@@ -35,6 +35,18 @@ void CTransform::Render(HDC _hdc)
 {
 }
 
+void CTransform::SetParent(CTransform* _Parent)
+{
+	m_ParentTransform = _Parent;
+	_Parent->m_ChildTranforms.push_back(this);
+}
+
+void CTransform::AddChild(CTransform* _Child)
+{
+	m_ChildTranforms.push_back(_Child);
+	_Child->SetParent(this);
+}
+
 Vec2 CTransform::GetViewPos()
 {
 	CLevel* curLevel = LevelManager::GetInstance()->GetCurrentLevel();

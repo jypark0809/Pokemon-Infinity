@@ -10,7 +10,7 @@ CGameObject::CGameObject()
 	, m_Children{}
 	, m_Layer(LayerType::NONE)
 {
-	AddComponent<CTransform>();
+	transform = AddComponent<CTransform>();
 }
 
 CGameObject::~CGameObject()
@@ -53,12 +53,20 @@ void CGameObject::Render(HDC _hdc)
 	}
 }
 
+void CGameObject::SetParent(CGameObject* _Parent)
+{
+	m_Parent = _Parent;
+	_Parent->m_Children.push_back(this);
+
+	transform->SetParent(_Parent->transform);
+}
+
 void CGameObject::AddChild(CGameObject* _Child)
 {
-	CTransform* pTransform = this->GetComponent<CTransform>();
-	pTransform->AddChild(_Child->GetComponent<CTransform>());
-
 	m_Children.push_back(_Child);
+	_Child->m_Parent = this;
+
+	transform->AddChild(_Child->transform);
 }
 
 CComponent* CGameObject::AddComponent(CComponent* _Component)

@@ -38,6 +38,7 @@ void CTilemap::Render(HDC _hdc)
 void CTilemap::SetGrid(CGrid* _Grid)
 {
 	m_Grid = _Grid;
+	m_Grid->AddTilemap(this);
 	m_TileSize = m_Grid->GetTileSize();
 	m_Column = m_Grid->GetColumn();
 	m_Row = m_Grid->GetRow();
@@ -47,7 +48,6 @@ void CTilemap::SetGrid(CGrid* _Grid)
 
 void CTilemap::AddTile(int _Column, int _Row, const wstring& _TileKey)
 {
-	// 존재하지 않는 행렬위치를 지정한 경우
 	if (_Row < 0 || m_Row <= _Row || _Column < 0 || m_Column <= _Column)
 		return;
 
@@ -56,6 +56,17 @@ void CTilemap::AddTile(int _Column, int _Row, const wstring& _TileKey)
 
 	int Idx = _Row * m_Column + _Column;
 	m_vecTile[Idx] = pTile;
+}
+
+void CTilemap::DeleteTile(int _Column, int _Row)
+{
+	if (_Row < 0 || m_Row <= _Row || _Column < 0 || m_Column <= _Column)
+		return;
+
+	int Idx = _Row * m_Column + _Column;
+
+	// AssetManager의 소멸자에서 Sprite를 지워주니까 괜찮다!
+	m_vecTile[Idx] = nullptr;
 }
 
 Vec2Int CTilemap::WorldToCell(Vec2 _Pos)

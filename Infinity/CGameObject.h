@@ -2,10 +2,13 @@
 #include "CBase.h"
 
 class CComponent;
+class CTransform;
 
 class CGameObject :
     public CBase
 {
+public:
+	CTransform*				transform;
 private:
 	CGameObject*			m_Parent;		// 부모 오브젝트
 	vector<CGameObject*>	m_Children;		// 자식 오브젝트들
@@ -19,15 +22,10 @@ public:
 	virtual void FinalTick();
 	virtual void Render(HDC _hdc);
 
-	void SetParent(CGameObject* _Parent)
-	{
-		m_Parent = _Parent;
-		if (_Parent) {
-			_Parent->AddChild(this);
-		}
-	}
+	void SetParent(CGameObject* _Parent);
 	CGameObject* GetParent() { return m_Parent; }
 	void AddChild(CGameObject* _Child);
+	vector<CGameObject*> GetChildren() { return m_Children; }
 
 	void SetLayerType(LayerType _Layer) { m_Layer = _Layer; }
 	LayerType GetLayerType() { return m_Layer; }

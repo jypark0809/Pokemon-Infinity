@@ -6,19 +6,26 @@ class CTexture;
 class CTilemap;
 class CCamera;
 
+enum PaintingTool
+{
+    PaintBrush,
+    Eraser
+};
+
 class CTilemapEditorLevel :
     public CLevel
 {
 private:
+    HMENU               m_hMenu;
+    CGrid*              m_Grid;
+    CTilemap*           m_Tilemap;
+    PaintingTool        m_PaintingTool;
+
+    HMENU               m_hSubMenu;
     HWND                m_SubWnd;
     HDC                 m_hSubDC;
     CTexture*           m_SubBackBuffer;
-    CTexture*           m_TileTexture;              // Tile Paletteø° æ≤¿œ Texture
-    CGrid*              m_Grid;
-    CTilemap*           m_Tilemap;
-
-    // CGameObject*        m_TilePalette;
-    // CCamera*            m_SubCamera;
+    CTexture*           m_TileTexture;   // Tileset
 
 public:
     virtual void BeginPlay() override;
@@ -29,13 +36,18 @@ public:
     virtual void OnEnter() override;
     virtual void OnExit() override;
 
-    // bool Cango(Vec2Int _CellPos);
+    void SetTilemap(CTilemap* _Tilemap) { m_Tilemap = _Tilemap; }
+    void SetPaintingTool(PaintingTool _Tool) { m_PaintingTool = _Tool; }
+    CTilemap* GetTilemap() { return m_Tilemap; }
+
+    void AddTilemap(const wstring& _TilemapName);
+
+    int SaveMap();
+    int LoadMap();
     void LoadFile();
 
 private:
     void ChangeSubWindowSize(int _Width, int _Height);
-    int SaveMap(const wstring& _RelativePath);
-    int LoadMap(const wstring& _RelativePath);
     void LoadTile();
 
     void CreateSubWindow();
@@ -47,4 +59,5 @@ public:
     ~CTilemapEditorLevel();
 };
 
-LRESULT CALLBACK    TilemapEditorProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    TilePaletteProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    TilePaletteHelperProc(HWND, UINT, WPARAM, LPARAM);

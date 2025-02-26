@@ -30,7 +30,8 @@ public:
     Vec2 GetScale() { return m_Scale; }
     void SetScale(Vec2 _Scale) { m_Scale = _Scale; }
 
-    void AddChild(CTransform* _Child) { m_ChildTranforms.push_back(_Child); }
+    void SetParent(CTransform* _Parent);
+    void AddChild(CTransform* _Child);
 
     Vec2 GetViewPos();
 

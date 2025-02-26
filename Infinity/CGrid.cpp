@@ -70,3 +70,8 @@ void CGrid::DrawGrid(HDC _hdc, Vec2 vPos)
 	}
 }
 
+void CGrid::RenderWorldScale(HDC _hdc)
+{
+	Vec2 vPos = GetOwner()->GetComponent<CTransform>()->GetPosition();
+	DrawGrid(_hdc, vPos);
+}

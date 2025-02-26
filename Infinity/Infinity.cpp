@@ -26,7 +26,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 1) 윈도우 창 정보 등록
     MyRegisterClass(hInstance, L"Infinity", WndProc);
-    MyRegisterClass(hInstance, L"TilePalette", TilemapEditorProc);
+    MyRegisterClass(hInstance, L"TilePalette", TilePaletteProc);
 
     // 2) 윈도우 창 생성
     if (!InitInstance (hInstance, nCmdShow))
@@ -162,6 +162,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 CSpriteEditorLevel* pSpriteEditor = dynamic_cast<CSpriteEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
                 assert(pSpriteEditor);
                 pSpriteEditor->CreateTilePalette();
+            }
+                break;
+            case ID_FILE_SAVE:
+            {
+                // [Tilemap Editor] - [File] - [Save]
+                CTilemapEditorLevel* pTilemapEditor = dynamic_cast<CTilemapEditorLevel*>(LevelManager::GetInstance()->GetCurrentLevel());
+                assert(pTilemapEditor);
+                pTilemapEditor->SaveMap();
             }
             break;
             case IDM_EXIT:

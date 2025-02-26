@@ -6,7 +6,6 @@
 CTile::CTile()
     : CAsset(AssetType::TILE)\
     , m_Sprite(nullptr)
-    , m_Blocked(false)
 {
 }
 
@@ -32,7 +31,6 @@ int CTile::Save(const wstring& _RelativePath)
 	SaveWString(pFile, GetKey());
 	SaveWString(pFile, GetRelativePath());
 
-	fwrite(&m_Blocked, sizeof(bool), 1, pFile);
 	SaveAssetInfo(pFile, m_Sprite);
 
 	fclose(pFile);
@@ -59,8 +57,6 @@ int CTile::Load(const wstring& _RelativePath)
 	SetName(Name);
 	SetKey(Key);
 	SetRelativePath(Path);
-
-	fread(&m_Blocked, sizeof(bool), 1, pFile);
 
 	m_Sprite = (CSprite*)LoadAssetInfo(pFile, AssetType::SPRITE);
 

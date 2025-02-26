@@ -14,17 +14,20 @@ private:
 
 private:
     void DrawGrid(HDC _hdc, Vec2 vPos);
+    
 
 public:
     int GetRow() { return m_Row; }
     int GetColumn() { return m_Column; }
     int GetTileSize() { return m_TileSize; }
+    vector<CTilemap*> GetTilemapVector() { return m_vecTilemap; }
 
     void SetRow(int _Row) { m_Row = _Row; }
     void SetColumn(int _Column) { m_Column = _Column; }
     void SetTileSize(UINT _Tilesize) { m_TileSize = _Tilesize; }
-
     void AddTilemap(CTilemap* _Tilemap) { m_vecTilemap.push_back(_Tilemap); }
+
+    void RenderWorldScale(HDC _hdc);
     Vec2Int WorldToCell(Vec2 _WorldPosition);
     Vec2 CellToWorld(Vec2Int _CellPosition);
 

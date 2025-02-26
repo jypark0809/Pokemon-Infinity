@@ -8,7 +8,7 @@
 #include "CTexture.h"
 #include "CSprite.h"
 #include "CFlipbook.h"
-// #include "Sound.h"
+#include "CTile.h"
 
 #pragma region Debug Render
 void DrawText(HDC _Hdc, Vec2 _Pos, const wstring& _Str)
@@ -138,6 +138,9 @@ CAsset* LoadAssetInfo(FILE* _File, AssetType _type)
 		break;
 	case AssetType::FLIPBOOK:
 		return AssetManager::GetInstance()->LoadFlipbook(key, path);
+		break;
+	case AssetType::TILE:
+		return AssetManager::GetInstance()->LoadTile(key, path);
 		break;
 	case AssetType::SOUND:
 		// return AssetManager::GetInstance()->LoadSound(key, path);

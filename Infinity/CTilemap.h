@@ -23,9 +23,10 @@ public:
     int GetRow() { return m_Row; }
     int GetColumn() { return m_Column; }
     int GetTileSize() { return m_TileSize; }
+    vector<CTile*>& GetTileVector() { return m_vecTile; }
 
     void AddTile(int _Column, int _Row, const wstring& _SpriteKey);
-    vector<CTile*>& GetTileVector() { return m_vecTile; }
+    void DeleteTile(int _Column, int _Row);
 
     void BeginPlay() override;
     void Tick() override;

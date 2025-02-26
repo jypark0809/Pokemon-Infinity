@@ -8,7 +8,6 @@ class CTile :
 {
 private:
     CSprite*    m_Sprite;
-    bool        m_Blocked;
 
 public:
     void SetSprite(CSprite* _Sprite) { m_Sprite = _Sprite; }
