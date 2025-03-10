@@ -153,6 +153,7 @@
     <ClInclude Include="CFlipbook.h" />
     <ClInclude Include="CFlipbookEditorLevel.h" />
     <ClInclude Include="CFlipbookPlayer.h" />
+    <ClInclude Include="CFSM.h" />
     <ClInclude Include="CGameLevel.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CGrid.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpriteEditorLevel.h" />
     <ClInclude Include="CSpriteRenderer.h" />
+    <ClInclude Include="CState.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
     <ClInclude Include="CTilemap.h" />
@@ -198,6 +200,7 @@
     <ClCompile Include="CFlipbook.cpp" />
     <ClCompile Include="CFlipbookEditorLevel.cpp" />
     <ClCompile Include="CFlipbookPlayer.cpp" />
+    <ClCompile Include="CFSM.cpp" />
     <ClCompile Include="CGameLevel.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CGrid.cpp" />
@@ -210,6 +213,7 @@
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpriteEditorLevel.cpp" />
     <ClCompile Include="CSpriteRenderer.cpp" />
+    <ClCompile Include="CState.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTilemap.cpp" />

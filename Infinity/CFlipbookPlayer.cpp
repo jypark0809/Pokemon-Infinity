@@ -6,13 +6,14 @@
 #include "CTexture.h"
 #include "CSprite.h"
 #include "CFlipbook.h"
-// #include "CGameObject.h"
+#include "CGameObject.h"
 
 CFlipbookPlayer::CFlipbookPlayer()
 	: CComponent(ComponentType::FLIPBOOKPLAYER)
 	, m_CurFlip(nullptr)
 	, m_Loop(false)
 {
+	
 }
 
 CFlipbookPlayer::~CFlipbookPlayer()

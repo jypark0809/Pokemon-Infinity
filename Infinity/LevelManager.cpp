@@ -26,7 +26,6 @@ void LevelManager::Init()
 	m_Levels[LevelType::SPRITE_EDITOR] = new CSpriteEditorLevel;
 	m_Levels[LevelType::FLIPBOOK_EDITOR] = new CFlipbookEditorLevel;
 	m_Levels[LevelType::TILEMAP_EDITOR] = new CTilemapEditorLevel;
-	
 
 	// StartLevel 을 현재 레벨로 지정
 	LoadLevel(LevelType::TILEMAP_EDITOR);

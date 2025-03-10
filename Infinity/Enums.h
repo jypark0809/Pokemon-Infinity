@@ -52,7 +52,8 @@ enum class ComponentType
 	TILEMAP,
 	TILEMAPRENDERER,
 	GRID,
-	SCRIPT
+	SCRIPT,
+	FSM
 };
 
 enum class AssetType

@@ -15,8 +15,9 @@ CPlayerController::CPlayerController()
 	, m_spRenderer(nullptr)
 	, m_State(PlayerState::IDLE)
 	, m_Dir(Dir::DOWN)
-	, m_Speed(5.f)
+	, m_Speed(50.f)
 {
+	
 }
 
 CPlayerController::~CPlayerController()
@@ -27,12 +28,8 @@ void CPlayerController::BeginPlay()
 {
 	Vec2 vResolution = CEngine::GetInstance()->GetResolution();
 	GetOwner()->GetComponent<CTransform>()->SetPosition(Vec2(vResolution.x / 2, vResolution.y / 2));
-
-	// FSM
-	m_fbPlayer = GetOwner()->AddComponent<CFlipbookPlayer>();
-	m_spRenderer = GetOwner()->AddComponent<CSpriteRenderer>();
-	m_fbPlayer->SetSpriteRenderer(m_spRenderer);
-
+	
+	m_fbPlayer = GetOwner()->GetComponent<CFlipbookPlayer>();
 	m_fbPlayer->AddFlipbook(0, AssetManager::GetInstance()->LoadFlipbook(L"Red_Move_Down", L"Flipbook\\Red_Move_Down.flip"));
 	//m_fbPlayer->AddFlipbook(1, AssetManager::GetInstance()->LoadFlipbook(L"IDLE_LEFT", L"Flipbook\\IDLE_LEFT.flip"));
 	//m_fbPlayer->AddFlipbook(2, AssetManager::GetInstance()->LoadFlipbook(L"IDLE_RIGHT", L"Flipbook\\IDLE_RIGHT.flip"));
@@ -47,22 +44,15 @@ void CPlayerController::BeginPlay()
 
 void CPlayerController::Tick()
 {
-	/*switch (m_State)
-	{
-	case PlayerState::IDLE:
-		TickIdle();
-		break;
-	case PlayerState::MOVE:
-		TickMove();
-		break;
-	case PlayerState::RUN:
-		TickRun();
-		break;
-	}*/
+	
 }
 
 void CPlayerController::FinalTick()
 {
+	if (KeyManager::GetInstance()->GetButton(Key::LEFT))
+		GetOwner()->transform->Translate(Vec2(-m_Speed * DT, 0));
+	if (KeyManager::GetInstance()->GetButton(Key::RIGHT))
+		GetOwner()->transform->Translate(Vec2(m_Speed * DT, 0));
 }
 
 void CPlayerController::Render(HDC _dc)
